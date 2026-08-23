@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Cassa Fanta</title>
+<meta name="apple-mobile-web-app-title" content="Cassa Fanta">
+<meta name="theme-color" content="#E6E8DF">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --carta:#E6E8DF;
+  --carta-alt:#F4F5EF;
+  --inchiostro:#16211C;
+  --rosso:#C8102E;
+  --blu:#1B3A6B;
+  --verde:#1F6F4A;
+  --linea:rgba(27,58,107,.16);
+  --linea-forte:rgba(27,58,107,.34);
+  --muto:rgba(22,33,28,.55);
+
+  --display:'Saira Condensed','Avenir Next Condensed','Helvetica Neue',Arial,sans-serif;
+  --body:'IBM Plex Sans',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,'Courier New',monospace;
+
+  --pad:16px;
+  --barra:64px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--carta);
+  color:var(--inchiostro);
+  font-family:var(--body);
+  font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  overscroll-behavior-y:none;
+}
+button{font-family:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
+input,select{font-family:inherit;font-size:16px}
+
+/* ---------- intestazione ---------- */
+.testata{
+  position:sticky;top:0;z-index:20;
+  background:var(--carta);
+  border-bottom:1px solid var(--linea-forte);
+  padding:calc(env(safe-area-inset-top) + 12px) var(--pad) 10px;
+  display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+}
+.marchio{
+  font-family:var(--display);font-weight:700;font-size:19px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--blu);
+  line-height:1;
+}
+.marchio small{display:block;font-family:var(--body);font-weight:400;font-size:10px;letter-spacing:.06em;color:var(--muto);text-transform:none;margin-top:3px}
+.saldo-testata{text-align:right;line-height:1.1}
+.saldo-testata b{font-family:var(--mono);font-weight:600;font-size:20px;display:block}
+.saldo-testata span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muto)}
+
+/* ---------- contenitore ---------- */
+main{padding:0 var(--pad) calc(var(--barra) + env(safe-area-inset-bottom) + 28px)}
+.vista{display:none;padding-top:16px;animation:sali .22s ease both}
+.vista.on{display:block}
+@keyframes sali{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.occhiello{
+  font-family:var(--display);font-weight:600;font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--blu);
+  margin:0 0 10px;display:flex;align-items:center;gap:10px;
+}
+.occhiello::after{content:'';flex:1;height:1px;background:var(--linea)}
+
+/* ---------- binario giornate ---------- */
+.binario{
+  display:flex;gap:6px;overflow-x:auto;padding:2px 0 12px;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  margin:0 calc(var(--pad) * -1);padding-left:var(--pad);padding-right:var(--pad);
+}
+.binario::-webkit-scrollbar{display:none}
+.gio{
+  flex:0 0 auto;width:42px;height:46px;border:1px solid var(--linea-forte);
+  background:var(--carta-alt);border-radius:3px;
+  font-family:var(--mono);font-weight:600;font-size:15px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  transition:background .15s,color .15s,border-color .15s;
+}
+.gio i{width:5px;height:5px;border-radius:50%;background:transparent;border:1px solid var(--linea-forte);display:block}
+.gio.piena i{background:var(--rosso);border-color:var(--rosso)}
+.gio.parziale i{background:transparent;border-color:var(--rosso)}
+.gio.sel{background:var(--blu);color:#fff;border-color:var(--blu)}
+.gio.sel i{border-color:rgba(255,255,255,.6)}
+.gio.sel.piena i{background:#fff;border-color:#fff}
+
+/* ---------- podio al contrario ---------- */
+.podio{position:relative;margin-top:2px}
+.slot{
+  width:100%;display:flex;align-items:center;gap:12px;
+  background:var(--carta-alt);border:1px solid var(--linea);
+  border-left:4px solid var(--rosso);
+  border-radius:3px;padding:13px 14px;margin-bottom:8px;text-align:left;
+  transition:transform .12s ease;
+}
+.slot:active{transform:scale(.985)}
+.slot .pos{
+  font-family:var(--display);font-weight:700;font-size:26px;line-height:1;
+  color:var(--rosso);min-width:38px;letter-spacing:-.01em;
+}
+.slot .chi{flex:1;min-width:0}
+.slot .chi b{
+  font-family:var(--display);font-weight:600;font-size:19px;line-height:1.1;
+  display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.slot .chi b.vuoto{color:var(--muto);font-weight:600}
+.slot .chi span{font-size:11px;color:var(--muto);display:block;margin-top:1px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot .cifra{font-family:var(--mono);font-weight:600;font-size:17px;color:var(--rosso);white-space:nowrap}
+.slot.grande{padding:19px 14px}
+.slot.media{padding:16px 14px}
+
+.riga-gio{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:12px;font-size:12px;color:var(--muto);
+}
+.riga-gio b{font-family:var(--mono);color:var(--inchiostro)}
+.svuota{font-size:12px;color:var(--rosso);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- timbro ---------- */
+.timbro{
+  position:absolute;right:6px;top:50%;transform:translateY(-50%) rotate(-11deg);
+  border:2.5px solid var(--rosso);color:var(--rosso);
+  font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.18em;
+  padding:5px 11px;border-radius:3px;text-transform:uppercase;
+  pointer-events:none;opacity:.85;
+}
+.timbro.batti{animation:batti .45s cubic-bezier(.2,1.4,.5,1) both}
+@keyframes batti{
+  0%{opacity:0;transform:translateY(-50%) rotate(-11deg) scale(2.4)}
+  60%{opacity:.95;transform:translateY(-50%) rotate(-11deg) scale(.94)}
+  100%{opacity:.85;transform:translateY(-50%) rotate(-11deg) scale(1)}
+}
+
+/* ---------- elenco squadre ---------- */
+.squadra{
+  width:100%;display:flex;align-items:center;gap:12px;text-align:left;
+  padding:12px 2px;border-bottom:1px solid var(--linea);
+}
+.squadra .nm{flex:1;min-width:0}
+.squadra .nm b{font-family:var(--display);font-weight:600;font-size:17px;display:block;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.squadra .nm span{font-size:11px;color:var(--muto)}
+.squadra .im{text-align:right}
+.squadra .im b{font-family:var(--mono);font-weight:600;font-size:16px;display:block}
+.squadra .im span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muto)}
+.debito{color:var(--rosso)}
+.pari{color:var(--verde)}
+
+/* ---------- cassa ---------- */
+.cifrone{
+  background:var(--carta-alt);border:1px solid var(--linea-forte);border-radius:3px;
+  padding:18px;text-align:center;margin-bottom:14px;
+}
+.cifrone b{font-family:var(--mono);font-weight:600;font-size:40px;line-height:1;display:block;color:var(--verde)}
+.cifrone span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muto);display:block;margin-top:7px}
+.coppia{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.mini{background:var(--carta-alt);border:1px solid var(--linea);border-radius:3px;padding:12px}
+.mini b{font-family:var(--mono);font-weight:600;font-size:20px;display:block}
+.mini span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muto)}
+.voce{display:flex;justify-content:space-between;padding:9px 2px;border-bottom:1px solid var(--linea);font-size:14px}
+.voce b{font-family:var(--mono);font-weight:500}
+.voce em{font-style:normal;color:var(--muto);font-size:11px;display:block}
+
+/* ---------- regole ---------- */
+.campo{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:11px 2px;border-bottom:1px solid var(--linea)}
+.campo label{font-size:14px;flex:1}
+.campo label em{font-style:normal;display:block;font-size:11px;color:var(--muto)}
+.campo input{
+  width:96px;text-align:right;background:var(--carta-alt);
+  border:1px solid var(--linea-forte);border-radius:3px;padding:8px 10px;
+  font-family:var(--mono);font-weight:600;color:var(--inchiostro);
+}
+.campo input:focus{outline:2px solid var(--blu);outline-offset:1px}
+.rigasq{display:flex;gap:8px;align-items:center;padding:7px 2px;border-bottom:1px solid var(--linea)}
+.rigasq input{flex:1;min-width:0;background:var(--carta-alt);border:1px solid var(--linea);
+  border-radius:3px;padding:8px 9px;color:var(--inchiostro);text-align:left;font-family:var(--body)}
+.rigasq input.man{font-size:13px;color:var(--muto);flex:.8}
+.cestino{color:var(--rosso);font-size:18px;padding:4px 6px;line-height:1}
+
+.bottone{
+  display:block;width:100%;text-align:center;padding:14px;border-radius:3px;
+  font-family:var(--display);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px;
+  background:var(--blu);color:#fff;margin-top:16px;
+}
+.bottone.vuoto{background:transparent;color:var(--blu);border:1px solid var(--linea-forte)}
+.bottone.pericolo{background:transparent;color:var(--rosso);border:1px solid var(--rosso)}
+
+textarea{
+  width:100%;height:130px;background:var(--carta-alt);border:1px solid var(--linea-forte);
+  border-radius:3px;padding:10px;font-family:var(--mono);font-size:11px;color:var(--inchiostro);
+  margin-top:8px;resize:vertical;
+}
+
+/* ---------- barra ---------- */
+.barra{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;
+  background:var(--carta);border-top:1px solid var(--linea-forte);
+  display:grid;grid-template-columns:repeat(4,1fr);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.tab{
+  height:var(--barra);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muto);
+}
+.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tab.on{color:var(--blu)}
+
+/* ---------- foglio ---------- */
+.velo{position:fixed;inset:0;z-index:40;background:rgba(22,33,28,.42);
+  opacity:0;pointer-events:none;transition:opacity .2s}
+.velo.on{opacity:1;pointer-events:auto}
+.foglio{
+  position:fixed;left:0;right:0;bottom:0;z-index:41;
+  background:var(--carta);border-top:3px solid var(--blu);
+  border-radius:14px 14px 0 0;
+  padding:8px var(--pad) calc(env(safe-area-inset-bottom) + 20px);
+  max-height:86vh;overflow-y:auto;
+  transform:translateY(101%);transition:transform .26s cubic-bezier(.3,1,.4,1);
+}
+.foglio.on{transform:none}
+.maniglia{width:38px;height:4px;background:var(--linea-forte);border-radius:2px;margin:6px auto 14px}
+.foglio h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 2px;letter-spacing:.01em}
+.foglio .sub{font-size:12px;color:var(--muto);margin:0 0 16px}
+.scelta{
+  width:100%;display:flex;align-items:center;gap:10px;text-align:left;
+  padding:12px 4px;border-bottom:1px solid var(--linea);
+}
+.scelta b{font-family:var(--display);font-weight:600;font-size:17px;flex:1;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.scelta span{font-size:11px;color:var(--muto)}
+.scelta.usata{opacity:.34}
+.scelta .tag{font-family:var(--mono);font-size:11px;color:var(--rosso)}
+
+.rapidi{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 4px}
+.rapidi button{border:1px solid var(--linea-forte);border-radius:20px;padding:8px 14px;
+  font-family:var(--mono);font-size:13px;font-weight:600;background:var(--carta-alt)}
+.grande-input{
+  width:100%;background:var(--carta-alt);border:1px solid var(--linea-forte);border-radius:3px;
+  padding:14px;font-family:var(--mono);font-weight:600;font-size:22px;text-align:center;
+  color:var(--inchiostro);margin-top:10px;
+}
+.guida{background:var(--carta-alt);border:1px solid var(--linea);border-left:4px solid var(--blu);
+  border-radius:3px;padding:12px 14px;font-size:13px}
+.guida p{margin:0 0 8px}
+.guida p:last-child{margin:0;color:var(--muto);font-size:12px}
+.vuotostato{text-align:center;color:var(--muto);font-size:13px;padding:26px 10px;
+  border:1px dashed var(--linea-forte);border-radius:3px}
+
+.avviso{
+  position:fixed;left:50%;bottom:calc(var(--barra) + env(safe-area-inset-bottom) + 16px);
+  transform:translate(-50%,14px);z-index:60;
+  background:var(--inchiostro);color:var(--carta);padding:9px 16px;border-radius:20px;
+  font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;
+}
+.avviso.on{opacity:1;transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<header class="testata">
+  <div class="marchio">Cassa Fanta<small id="sottotitolo">Lega a 10 · stagione in corso</small></div>
+  <div class="saldo-testata"><b id="cassaTop">€0</b><span>in cassa</span></div>
+</header>
+
+<main>
+  <!-- ============ GIORNATE ============ -->
+  <section class="vista on" id="v-giornate">
+    <p class="occhiello">Giornata</p>
+    <div class="binario" id="binario"></div>
+    <div class="podio" id="podio"></div>
+    <div class="riga-gio">
+      <span id="statoGio">—</span>
+      <button class="svuota" id="svuotaGio">Svuota giornata</button>
+    </div>
+  </section>
+
+  <!-- ============ SQUADRE ============ -->
+  <section class="vista" id="v-squadre">
+    <p class="occhiello">Posizione delle squadre</p>
+    <div id="elencoSquadre"></div>
+  </section>
+
+  <!-- ============ CASSA ============ -->
+  <section class="vista" id="v-cassa">
+    <p class="occhiello">Movimenti</p>
+    <div class="cifrone"><b id="c-incassato">€0</b><span>Incassato</span></div>
+    <div class="coppia">
+      <div class="mini"><b id="c-maturato">€0</b><span>Maturato</span></div>
+      <div class="mini"><b id="c-residuo" class="debito">€0</b><span>Da incassare</span></div>
+    </div>
+    <p class="occhiello">Composizione</p>
+    <div class="voce"><span>Quote iniziali<em id="c-detQuote">—</em></span><b id="c-quote">€0</b></div>
+    <div class="voce"><span>Penalità di giornata<em id="c-detPen">—</em></span><b id="c-pen">€0</b></div>
+    <p class="occhiello" style="margin-top:20px">Ultimi versamenti</p>
+    <div id="elencoVersamenti"></div>
+  </section>
+
+  <!-- ============ REGOLE ============ -->
+  <section class="vista" id="v-regole">
+    <p class="occhiello">Quote</p>
+    <div class="campo"><label>Quota iniziale<em>Per squadra, a inizio stagione</em></label><input id="in-quota" inputmode="decimal"></div>
+    <div class="campo"><label>Terzultimo<em>8ª posizione di giornata</em></label><input id="in-p0" inputmode="decimal"></div>
+    <div class="campo"><label>Penultimo<em>9ª posizione di giornata</em></label><input id="in-p1" inputmode="decimal"></div>
+    <div class="campo"><label>Ultimo<em>10ª posizione di giornata</em></label><input id="in-p2" inputmode="decimal"></div>
+    <div class="campo"><label>Numero di giornate</label><input id="in-ngio" inputmode="numeric"></div>
+
+    <p class="occhiello" style="margin-top:22px">Squadre</p>
+    <div id="elencoRegoleSquadre"></div>
+    <button class="bottone vuoto" id="aggiungiSquadra">Aggiungi squadra</button>
+
+    <p class="occhiello" style="margin-top:26px">Icona sulla schermata Home</p>
+    <div class="guida">
+      <p>Apri questa pagina in <b>Safari</b>, tocca <b>Condividi</b> in basso e scegli
+      <b>Aggiungi alla schermata Home</b>. L'app parte a tutto schermo, senza barre del browser.</p>
+      <p id="notaDeposito"></p>
+    </div>
+
+    <p class="occhiello" style="margin-top:26px">Backup</p>
+    <p style="font-size:12px;color:var(--muto);margin:0">Copia il testo e conservalo. Per ripristinare, incollalo qui e premi Ripristina.</p>
+    <textarea id="backup" spellcheck="false"></textarea>
+    <button class="bottone vuoto" id="copiaBackup">Copia dati</button>
+    <button class="bottone vuoto" id="ripristina">Ripristina dai dati incollati</button>
+    <button class="bottone pericolo" id="azzera" style="margin-top:26px">Azzera tutta la stagione</button>
+  </section>
+</main>
+
+<nav class="barra">
+  <button class="tab on" data-v="giornate">
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Giornate</button>
+  <button class="tab" data-v="squadre">
+    <svg viewBox="0 0 24 24"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.2"/><path d="M18 8h4M20 6v4"/></svg>Squadre</button>
+  <button class="tab" data-v="cassa">
+    <svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="13" rx="2"/><path d="M2.5 10.5h19M6 15h4"/></svg>Cassa</button>
+  <button class="tab" data-v="regole">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7H1a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 2.6 7a1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 7 2.6h.1A1.6 1.6 0 0 0 8.6 1V1a2 2 0 1 1 4 0v.1A1.6 1.6 0 0 0 15 2.6"/></svg>Regole</button>
+</nav>
+
+<div class="velo" id="velo"></div>
+<div class="foglio" id="foglio"><div class="maniglia"></div><div id="contFoglio"></div></div>
+<div class="avviso" id="avviso"></div>
+
+<script>
+'use strict';
+
+/* ====================== dati ====================== */
+const CHIAVE = 'cassa_fanta_v1';
+
+const SQUADRE_INIZIALI = [
+  ['Wanderlust','Mago de Setubal'],
+  ['agro zoo','nino volpe'],
+  ['Fc Colgia 83','Giovanni Colonese'],
+  ['Futuro Nazionale','Aspide & bomber'],
+  ['Generale dietro la collina','Vastiello'],
+  ['herta vernello','cicciomax & Ciccio'],
+  ['Itaca','Nessuno'],
+  ['OLLYFANS','Ale Perez'],
+  ['Real Vasso','Real Vasso'],
+  ['Realcastello','Enzo Nobile']
+];
+
+function statoIniziale(){
+  return {
+    v:1,
+    config:{quota:60, pen:[5,5,5], ngio:38},
+    squadre:SQUADRE_INIZIALI.map((s,i)=>({id:'t'+i, nome:s[0], man:s[1]})),
+    giornate:{},
+    versamenti:[]
+  };
+}
+
+let S = statoIniziale();
+let giornataAttiva = 1;
+
+
+/* ====================== persistenza ====================== */
+/* Il deposito si adatta a dove gira l'app: nel browser usa la memoria di Safari,
+   dentro Claude usa lo storage dell'artefatto, e se entrambi mancano tiene i dati
+   solo per la sessione corrente (in quel caso il backup diventa indispensabile). */
+const DEPOSITO = (function(){
+  if(window.storage && window.storage.get){
+    return {
+      tipo:'claude',
+      async leggi(k){ try{ const r = await window.storage.get(k); return r && r.value ? r.value : null; }catch(e){ return null; } },
+      async scrivi(k,v){ await window.storage.set(k,v); }
+    };
+  }
+  try{
+    const p = '__prova_scrittura__';
+    localStorage.setItem(p,'1'); localStorage.removeItem(p);
+    return {
+      tipo:'browser',
+      async leggi(k){ return localStorage.getItem(k); },
+      async scrivi(k,v){ localStorage.setItem(k,v); }
+    };
+  }catch(e){ /* memoria del browser non accessibile */ }
+  let volatile = null;
+  return { tipo:'sessione', async leggi(){ return volatile; }, async scrivi(k,v){ volatile = v; } };
+})();
+
+async function carica(){
+  try{
+    const t = await DEPOSITO.leggi(CHIAVE);
+    if(t) return JSON.parse(t);
+  }catch(e){ /* nessun dato salvato: si parte da zero */ }
+  return null;
+}
+let attesaSalvataggio = null;
+let salvataggioFallito = false;
+function salva(){
+  clearTimeout(attesaSalvataggio);
+  attesaSalvataggio = setTimeout(async ()=>{
+    try{
+      await DEPOSITO.scrivi(CHIAVE, JSON.stringify(S));
+      salvataggioFallito = false;
+    }catch(e){
+      if(!salvataggioFallito){ salvataggioFallito = true; avvisa('Salvataggio non riuscito: copia il backup'); }
+    }
+  }, 350);
+}
+
+/* ====================== utilità ====================== */
+const $ = s => document.querySelector(s);
+function eur(n){
+  n = Math.round(n*100)/100;
+  return '€' + (Number.isInteger(n) ? n : n.toFixed(2).replace('.',','));
+}
+function num(v, def){
+  const n = parseFloat(String(v).replace(',','.'));
+  return isNaN(n) ? def : n;
+}
+function squadra(id){ return S.squadre.find(t=>t.id===id) || null; }
+function terne(g){ return S.giornate[g] || [null,null,null]; }
+
+let timerAvviso;
+function avvisa(t){
+  const a = $('#avviso'); a.textContent = t; a.classList.add('on');
+  clearTimeout(timerAvviso); timerAvviso = setTimeout(()=>a.classList.remove('on'), 1900);
+}
+
+/* ====================== calcoli ====================== */
+function penalitaDi(id){
+  let tot = 0, conta = [0,0,0];
+  for(const g in S.giornate){
+    const t = S.giornate[g];
+    for(let i=0;i<3;i++) if(t[i]===id){ tot += S.config.pen[i]; conta[i]++; }
+  }
+  return {tot, conta};
+}
+function versatoDi(id){
+  return S.versamenti.filter(v=>v.team===id).reduce((a,b)=>a+b.importo,0);
+}
+function contiSquadra(id){
+  const p = penalitaDi(id);
+  const dovuto = S.config.quota + p.tot;
+  const versato = versatoDi(id);
+  return {quota:S.config.quota, pen:p.tot, conta:p.conta, dovuto, versato, saldo:dovuto-versato};
+}
+function totaliCassa(){
+  const quote = S.config.quota * S.squadre.length;
+  let pen = 0;
+  for(const g in S.giornate){
+    const t = S.giornate[g];
+    for(let i=0;i<3;i++) if(t[i]) pen += S.config.pen[i];
+  }
+  const incassato = S.versamenti.reduce((a,b)=>a+b.importo,0);
+  return {quote, pen, maturato:quote+pen, incassato, residuo:quote+pen-incassato};
+}
+function giornateRegistrate(){
+  return Object.keys(S.giornate).filter(g=>terne(g).some(x=>x)).length;
+}
+
+/* ====================== binario giornate ====================== */
+function costruisciBinario(){
+  const b = $('#binario'); b.innerHTML = '';
+  for(let g=1; g<=S.config.ngio; g++){
+    const el = document.createElement('button');
+    el.className = 'gio'; el.dataset.g = g;
+    el.innerHTML = '<span>'+g+'</span><i></i>';
+    el.addEventListener('click', ()=>{ giornataAttiva = g; aggiornaBinario(); disegnaPodio(false); });
+    b.appendChild(el);
+  }
+  aggiornaBinario();
+  const sel = b.querySelector('.gio.sel');
+  if(sel) sel.scrollIntoView({inline:'center', block:'nearest'});
+}
+function aggiornaBinario(){
+  document.querySelectorAll('.gio').forEach(el=>{
+    const g = +el.dataset.g;
+    const t = terne(g);
+    const pieni = t.filter(x=>x).length;
+    el.classList.toggle('sel', g===giornataAttiva);
+    el.classList.toggle('piena', pieni===3);
+    el.classList.toggle('parziale', pieni>0 && pieni<3);
+  });
+}
+
+/* ====================== podio al contrario ====================== */
+const ETICHETTE = [
+  {pos:'8°', ruolo:'terzultimo', cls:''},
+  {pos:'9°', ruolo:'penultimo', cls:'media'},
+  {pos:'10°', ruolo:'ultimo', cls:'grande'}
+];
+let eraCompleta = false;
+
+function disegnaPodio(animaTimbro){
+  const t = terne(giornataAttiva);
+  const completa = t.every(x=>x);
+  const p = $('#podio');
+  p.innerHTML = '';
+  const importiDiversi = new Set(S.config.pen).size > 1;
+  ETICHETTE.forEach((e,i)=>{
+    const sq = squadra(t[i]);
+    const b = document.createElement('button');
+    b.className = 'slot ' + (importiDiversi ? e.cls : 'media');
+    b.innerHTML =
+      '<span class="pos">'+e.pos+'</span>'+
+      '<span class="chi">'+
+        (sq ? '<b>'+esc(sq.nome)+'</b><span>'+esc(sq.man)+'</span>'
+            : '<b class="vuoto">Scegli il '+e.ruolo+'</b><span>Tocca per selezionare</span>')+
+      '</span>'+
+      '<span class="cifra">'+eur(S.config.pen[i])+'</span>';
+    b.addEventListener('click', ()=>apriScelta(i));
+    p.appendChild(b);
+  });
+  if(completa){
+    const s = document.createElement('div');
+    s.className = 'timbro' + ((animaTimbro && !eraCompleta) ? ' batti' : '');
+    s.textContent = 'Registrata';
+    p.appendChild(s);
+  }
+  eraCompleta = completa;
+
+  const pieni = t.filter(x=>x).length;
+  let inCassa = 0;
+  for(let i=0;i<3;i++) if(t[i]) inCassa += S.config.pen[i];
+  $('#statoGio').innerHTML = pieni===0
+    ? 'Nessuna posizione segnata'
+    : (pieni<3 ? pieni+' su 3 segnate · ' : 'Giornata completa · ') + '<b>'+eur(inCassa)+'</b> in cassa';
+  aggiornaBinario();
+  aggiornaTestata();
+}
+function esc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+/* ====================== foglio: scelta squadra ====================== */
+function apriFoglio(html){
+  $('#contFoglio').innerHTML = html;
+  $('#velo').classList.add('on');
+  $('#foglio').classList.add('on');
+}
+function chiudiFoglio(){
+  $('#velo').classList.remove('on');
+  $('#foglio').classList.remove('on');
+}
+$('#velo').addEventListener('click', chiudiFoglio);
+
+function apriScelta(i){
+  const t = terne(giornataAttiva);
+  const e = ETICHETTE[i];
+  let html = '<h3>'+e.pos+' di giornata</h3><p class="sub">Giornata '+giornataAttiva+' · versa '+eur(S.config.pen[i])+'</p>';
+  S.squadre.forEach(sq=>{
+    const usataAltrove = t.includes(sq.id) && t[i] !== sq.id;
+    const attuale = t[i] === sq.id;
+    html += '<button class="scelta'+(usataAltrove?' usata':'')+'" data-id="'+sq.id+'"'+(usataAltrove?' disabled':'')+'>'+
+      '<b>'+esc(sq.nome)+'</b><span>'+esc(sq.man)+'</span>'+
+      (attuale ? '<span class="tag">selezionata</span>' : '')+'</button>';
+  });
+  if(t[i]) html += '<button class="bottone vuoto" id="togliSlot">Togli dalla giornata</button>';
+  apriFoglio(html);
+
+  $('#contFoglio').querySelectorAll('.scelta').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      const arr = terne(giornataAttiva).slice();
+      arr[i] = b.dataset.id;
+      S.giornate[giornataAttiva] = arr;
+      salva(); chiudiFoglio(); disegnaPodio(true);
+    });
+  });
+  const tg = $('#togliSlot');
+  if(tg) tg.addEventListener('click', ()=>{
+    const arr = terne(giornataAttiva).slice();
+    arr[i] = null;
+    if(arr.every(x=>!x)) delete S.giornate[giornataAttiva]; else S.giornate[giornataAttiva] = arr;
+    salva(); chiudiFoglio(); disegnaPodio(false);
+  });
+}
+
+$('#svuotaGio').addEventListener('click', ()=>{
+  if(!S.giornate[giornataAttiva]) { avvisa('Giornata già vuota'); return; }
+  delete S.giornate[giornataAttiva];
+  salva(); disegnaPodio(false); avvisa('Giornata '+giornataAttiva+' svuotata');
+});
+
+/* ====================== squadre ====================== */
+function disegnaSquadre(){
+  const c = $('#elencoSquadre'); c.innerHTML = '';
+  const righe = S.squadre.map(sq=>({sq, k:contiSquadra(sq.id)}))
+    .sort((a,b)=> b.k.saldo - a.k.saldo || a.sq.nome.localeCompare(b.sq.nome,'it'));
+  righe.forEach(({sq,k})=>{
+    const b = document.createElement('button');
+    b.className = 'squadra';
+    b.innerHTML =
+      '<span class="nm"><b>'+esc(sq.nome)+'</b><span>'+esc(sq.man)+
+        (k.conta[2] ? ' · '+k.conta[2]+'× ultimo' : '')+'</span></span>'+
+      '<span class="im"><b class="'+(k.saldo>0?'debito':'pari')+'">'+eur(k.saldo)+'</b>'+
+      '<span>'+(k.saldo>0?'da versare':'in regola')+'</span></span>';
+    b.addEventListener('click', ()=>apriSquadra(sq.id));
+    c.appendChild(b);
+  });
+}
+
+function apriSquadra(id){
+  const sq = squadra(id), k = contiSquadra(id);
+  let html = '<h3>'+esc(sq.nome)+'</h3><p class="sub">'+esc(sq.man)+'</p>';
+  html += '<div class="voce"><span>Quota iniziale</span><b>'+eur(k.quota)+'</b></div>';
+  html += '<div class="voce"><span>Penalità<em>'+k.conta[0]+'× terzultimo · '+k.conta[1]+'× penultimo · '+k.conta[2]+'× ultimo</em></span><b>'+eur(k.pen)+'</b></div>';
+  html += '<div class="voce"><span>Totale dovuto</span><b>'+eur(k.dovuto)+'</b></div>';
+  html += '<div class="voce"><span>Già versato</span><b class="pari">'+eur(k.versato)+'</b></div>';
+  html += '<div class="voce"><span><b>Saldo</b></span><b class="'+(k.saldo>0?'debito':'pari')+'">'+eur(k.saldo)+'</b></div>';
+
+  html += '<p class="occhiello" style="margin-top:20px">Segna un versamento</p>';
+  html += '<div class="rapidi">'+[5,15,30,60].map(v=>'<button data-r="'+v+'">+'+eur(v)+'</button>').join('')+
+    (k.saldo>0 ? '<button data-r="'+k.saldo+'">Salda '+eur(k.saldo)+'</button>' : '')+'</div>';
+  html += '<input class="grande-input" id="impVers" inputmode="decimal" placeholder="0">';
+  html += '<button class="bottone" id="salvaVers">Segna versamento</button>';
+
+  const miei = S.versamenti.filter(v=>v.team===id).slice().reverse();
+  if(miei.length){
+    html += '<p class="occhiello" style="margin-top:22px">Storico</p>';
+    miei.forEach(v=>{
+      html += '<div class="voce"><span>'+v.data+'</span><b>'+eur(v.importo)+
+        ' <button class="cestino" data-del="'+v.id+'">×</button></b></div>';
+    });
+  }
+  apriFoglio(html);
+
+  $('#contFoglio').querySelectorAll('[data-r]').forEach(b=>{
+    b.addEventListener('click', ()=>{ $('#impVers').value = String(b.dataset.r).replace('.',','); });
+  });
+  $('#salvaVers').addEventListener('click', ()=>{
+    const imp = num($('#impVers').value, 0);
+    if(!imp){ avvisa('Inserisci un importo'); return; }
+    S.versamenti.push({
+      id:'v'+Date.now(), team:id, importo:imp,
+      data:new Date().toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'2-digit'})
+    });
+    salva(); chiudiFoglio(); disegnaSquadre(); disegnaCassa(); aggiornaTestata();
+    avvisa(eur(imp)+' segnati per '+sq.nome);
+  });
+  $('#contFoglio').querySelectorAll('[data-del]').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      S.versamenti = S.versamenti.filter(v=>v.id!==b.dataset.del);
+      salva(); apriSquadra(id); disegnaSquadre(); disegnaCassa(); aggiornaTestata();
+    });
+  });
+}
+
+/* ====================== cassa ====================== */
+function disegnaCassa(){
+  const t = totaliCassa();
+  $('#c-incassato').textContent = eur(t.incassato);
+  $('#c-maturato').textContent = eur(t.maturato);
+  $('#c-residuo').textContent = eur(t.residuo);
+  $('#c-quote').textContent = eur(t.quote);
+  $('#c-pen').textContent = eur(t.pen);
+  $('#c-detQuote').textContent = S.squadre.length + ' squadre × ' + eur(S.config.quota);
+  $('#c-detPen').textContent = giornateRegistrate() + ' giornate registrate';
+
+  const c = $('#elencoVersamenti'); c.innerHTML = '';
+  const ultimi = S.versamenti.slice().reverse().slice(0,25);
+  if(!ultimi.length){
+    c.innerHTML = '<div class="vuotostato">Nessun versamento segnato. Apri una squadra per registrare il primo.</div>';
+    return;
+  }
+  ultimi.forEach(v=>{
+    const sq = squadra(v.team);
+    c.insertAdjacentHTML('beforeend',
+      '<div class="voce"><span>'+esc(sq?sq.nome:'—')+'<em>'+v.data+'</em></span><b class="pari">'+eur(v.importo)+'</b></div>');
+  });
+}
+function aggiornaTestata(){
+  const t = totaliCassa();
+  $('#cassaTop').textContent = eur(t.incassato);
+  $('#sottotitolo').textContent = 'Lega a '+S.squadre.length+' · '+giornateRegistrate()+'/'+S.config.ngio+' giornate';
+}
+
+/* ====================== regole ====================== */
+function disegnaRegole(){
+  $('#in-quota').value = String(S.config.quota).replace('.',',');
+  $('#in-p0').value = String(S.config.pen[0]).replace('.',',');
+  $('#in-p1').value = String(S.config.pen[1]).replace('.',',');
+  $('#in-p2').value = String(S.config.pen[2]).replace('.',',');
+  $('#in-ngio').value = S.config.ngio;
+
+  const c = $('#elencoRegoleSquadre'); c.innerHTML = '';
+  S.squadre.forEach(sq=>{
+    const r = document.createElement('div');
+    r.className = 'rigasq';
+    r.innerHTML = '<input value="'+esc(sq.nome)+'" data-c="nome"><input class="man" value="'+esc(sq.man)+'" data-c="man"><button class="cestino">×</button>';
+    r.querySelectorAll('input').forEach(inp=>{
+      inp.addEventListener('change', ()=>{ sq[inp.dataset.c] = inp.value.trim(); salva(); disegnaSquadre(); disegnaPodio(false); });
+    });
+    r.querySelector('.cestino').addEventListener('click', ()=>{
+      if(!confirm('Togliere «'+sq.nome+'» dalla lega? Sparisce anche dalle giornate segnate.')) return;
+      S.squadre = S.squadre.filter(x=>x.id!==sq.id);
+      for(const g in S.giornate){
+        S.giornate[g] = S.giornate[g].map(x=> x===sq.id ? null : x);
+        if(S.giornate[g].every(x=>!x)) delete S.giornate[g];
+      }
+      S.versamenti = S.versamenti.filter(v=>v.team!==sq.id);
+      salva(); disegnaRegole(); disegnaSquadre(); disegnaCassa(); disegnaPodio(false);
+    });
+    c.appendChild(r);
+  });
+  $('#backup').value = JSON.stringify(S);
+  const nota = $('#notaDeposito');
+  if(nota){
+    nota.textContent = DEPOSITO.tipo === 'sessione'
+      ? 'Attenzione: qui i dati non restano in memoria. Copia il backup prima di chiudere.'
+      : 'I dati restano su questo telefono. Copia ogni tanto il backup qui sotto.';
+  }
+}
+
+['in-quota','in-p0','in-p1','in-p2','in-ngio'].forEach(idc=>{
+  $('#'+idc).addEventListener('change', ()=>{
+    S.config.quota = Math.max(0, num($('#in-quota').value, S.config.quota));
+    S.config.pen = [
+      Math.max(0, num($('#in-p0').value, S.config.pen[0])),
+      Math.max(0, num($('#in-p1').value, S.config.pen[1])),
+      Math.max(0, num($('#in-p2').value, S.config.pen[2]))
+    ];
+    S.config.ngio = Math.min(60, Math.max(1, Math.round(num($('#in-ngio').value, S.config.ngio))));
+    if(giornataAttiva > S.config.ngio) giornataAttiva = S.config.ngio;
+    salva(); disegnaRegole(); costruisciBinario(); disegnaPodio(false); disegnaSquadre(); disegnaCassa();
+    avvisa('Regole aggiornate');
+  });
+});
+
+$('#aggiungiSquadra').addEventListener('click', ()=>{
+  S.squadre.push({id:'t'+Date.now(), nome:'Nuova squadra', man:''});
+  salva(); disegnaRegole(); disegnaSquadre(); disegnaCassa();
+});
+$('#copiaBackup').addEventListener('click', async ()=>{
+  const ta = $('#backup'); ta.select();
+  try{ await navigator.clipboard.writeText(ta.value); avvisa('Dati copiati'); }
+  catch(e){ document.execCommand('copy'); avvisa('Dati copiati'); }
+});
+$('#ripristina').addEventListener('click', ()=>{
+  try{
+    const d = JSON.parse($('#backup').value);
+    if(!d.squadre || !d.config) throw 0;
+    S = d; salva(); avviaSchermate(); avvisa('Dati ripristinati');
+  }catch(e){ avvisa('Il testo incollato non è valido'); }
+});
+$('#azzera').addEventListener('click', ()=>{
+  if(!confirm('Cancellare giornate, versamenti e riportare le quote ai valori di partenza?')) return;
+  S = statoIniziale(); giornataAttiva = 1; salva(); avviaSchermate(); avvisa('Stagione azzerata');
+});
+
+/* ====================== navigazione ====================== */
+document.querySelectorAll('.tab').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.vista').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    $('#v-'+b.dataset.v).classList.add('on');
+    if(b.dataset.v==='squadre') disegnaSquadre();
+    if(b.dataset.v==='cassa') disegnaCassa();
+    if(b.dataset.v==='regole') disegnaRegole();
+    window.scrollTo(0,0);
+  });
+});
+
+/* ====================== avvio ====================== */
+function avviaSchermate(){
+  costruisciBinario();
+  disegnaPodio(false);
+  disegnaSquadre();
+  disegnaCassa();
+  disegnaRegole();
+  aggiornaTestata();
+}
+(async function(){
+  const salvato = await carica();
+  if(salvato && salvato.squadre) S = Object.assign(statoIniziale(), salvato);
+  // se non è ancora stato inserito nulla, allinea le quote ai valori correnti
+  if(!Object.keys(S.giornate).length && !S.versamenti.length){
+    S.config.quota = statoIniziale().config.quota;
+    S.config.pen = statoIniziale().config.pen;
+  }
+  // prima giornata non ancora completata
+  for(let g=1; g<=S.config.ngio; g++){
+    if(terne(g).some(x=>!x)){ giornataAttiva = g; break; }
+  }
+  avviaSchermate();
+})();
+
+/* ====================== funzionamento senza rete ====================== */
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('./sw.js').catch(()=>{ /* aperta da file locale: si prosegue senza */ });
+  });
+}
+</script>
+</body>
+</html>
