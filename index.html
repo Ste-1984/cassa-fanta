@@ -104,6 +104,7 @@ main{padding:0 var(--pad) calc(var(--barra) + env(safe-area-inset-bottom) + 28px
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .slot.compatta .chi span{font-size:10px}
 .slot .cifra{font-family:var(--mono);font-weight:600;font-size:16px;color:var(--rosso);white-space:nowrap}
+.slot .cifra.propria{color:var(--blu);text-decoration:underline;text-underline-offset:3px}
 
 .aggiungiPM{width:100%;border:1px dashed var(--linea-forte);border-radius:3px;padding:11px;
   font-size:13px;color:var(--blu);margin-top:2px}
@@ -277,7 +278,7 @@ textarea{width:100%;height:130px;background:var(--carta-alt);border:1px solid va
   <section class="vista" id="v-regole">
     <p class="occhiello">Quote</p>
     <div class="campo"><label>Quota iniziale<em>Per squadra, a inizio stagione</em></label><input id="in-quota" inputmode="decimal"></div>
-    <div class="campo"><label>Quota di giornata<em>Per ogni squadra che paga</em></label><input id="in-quotaGio" inputmode="decimal"></div>
+    <div class="campo"><label>Quota di giornata<em>Vale per tutte le caselle, salvo modifiche singole</em></label><input id="in-quotaGio" inputmode="decimal"></div>
     <div class="campo"><label>Squadre paganti<em>Le ultime N di ogni giornata</em></label><input id="in-npag" inputmode="numeric"></div>
     <div class="campo"><label>Numero di giornate</label><input id="in-ngio" inputmode="numeric"></div>
 
@@ -337,8 +338,8 @@ const SQUADRE_INIZIALI = [
 
 function statoIniziale(){
   return {
-    v:2,
-    config:{quota:60, quotaGio:5, npag:6, ngio:38},
+    v:3,
+    config:{quota:60, quotaGio:2.5, npag:6, ngio:38},
     squadre:SQUADRE_INIZIALI.map((s,i)=>({id:'t'+i, nome:s[0], man:s[1]})),
     giornate:{},
     versamenti:[]
@@ -357,9 +358,13 @@ function migra(d){
     d.config.npag = 6;
     delete d.config.pen;
   }
-  if(typeof d.config.quotaGio !== 'number') d.config.quotaGio = 5;
+  if(typeof d.config.quotaGio !== 'number') d.config.quotaGio = 2.5;
   if(typeof d.config.npag !== 'number') d.config.npag = 6;
-  d.v = 2;
+  /* Da semplice elenco di squadre a voci che possono portare un importo proprio. */
+  for(const g in (d.giornate||{})){
+    d.giornate[g] = (d.giornate[g]||[]).map(x => (x && typeof x === 'string') ? {t:x} : (x || null));
+  }
+  d.v = 3;
   return d;
 }
 
@@ -423,6 +428,13 @@ function caselle(g){
 /* La casella più in basso è l'ultima in classifica; si risale da lì. */
 function ordinale(i, n){ return S.squadre.length - (n - 1 - i); }
 
+/* Una voce è {t:idSquadra} e, solo se l'importo è stato forzato, anche {i:importo}.
+   Senza importo proprio vale la quota di giornata, così cambiandola in Regole
+   si aggiornano da sole tutte le giornate già segnate. */
+function idDi(v){ return v ? v.t : null; }
+function importoDi(v){ return (v && typeof v.i === 'number') ? v.i : S.config.quotaGio; }
+function haImportoProprio(v){ return !!(v && typeof v.i === 'number'); }
+
 let timerAvviso;
 function avvisa(t){
   const a = $('#avviso'); a.textContent = t; a.classList.add('on');
@@ -431,10 +443,12 @@ function avvisa(t){
 
 /* ====================== calcoli ====================== */
 function penalitaDi(id){
-  const numeri = [];
-  for(const g in S.giornate) if((S.giornate[g]||[]).indexOf(id) !== -1) numeri.push(+g);
+  const numeri = []; let tot = 0;
+  for(const g in S.giornate){
+    (S.giornate[g]||[]).forEach(v=>{ if(v && v.t===id){ numeri.push(+g); tot += importoDi(v); } });
+  }
   numeri.sort((a,b)=>a-b);
-  return {volte:numeri.length, tot:numeri.length * S.config.quotaGio, numeri};
+  return {volte:numeri.length, tot, numeri};
 }
 function versatoDi(id){ return S.versamenti.filter(v=>v.team===id).reduce((a,b)=>a+b.importo,0); }
 function contiSquadra(id){
@@ -448,9 +462,14 @@ function quotePagate(){
   for(const g in S.giornate) n += (S.giornate[g]||[]).filter(x=>x).length;
   return n;
 }
+function totalePenalita(){
+  let t = 0;
+  for(const g in S.giornate) (S.giornate[g]||[]).forEach(v=>{ if(v) t += importoDi(v); });
+  return t;
+}
 function totaliCassa(){
   const quote = S.config.quota * S.squadre.length;
-  const pen = quotePagate() * S.config.quotaGio;
+  const pen = totalePenalita();
   const incassato = S.versamenti.reduce((a,b)=>a+b.importo,0);
   return {quote, pen, maturato:quote+pen, incassato, residuo:quote+pen-incassato};
 }
@@ -493,8 +512,8 @@ function disegnaPodio(animaTimbro){
   const compatta = n >= 5;
 
   const p = $('#podio'); p.innerHTML = '';
-  c.forEach((id,i)=>{
-    const sq = squadra(id);
+  c.forEach((voce,i)=>{
+    const sq = squadra(idDi(voce));
     const extra = i < (n - S.config.npag);   // casella in più aggiunta per pari merito
     const b = document.createElement('button');
     b.className = 'slot' + (compatta ? ' compatta' : '') + (extra ? ' extra' : '');
@@ -504,7 +523,7 @@ function disegnaPodio(animaTimbro){
         (sq ? '<b>'+esc(sq.nome)+'</b><span>'+esc(sq.man)+'</span>'
             : '<b class="vuoto">Da assegnare</b><span>Tocca per scegliere</span>')+
       '</span>'+
-      '<span class="cifra">'+eur(S.config.quotaGio)+'</span>';
+      '<span class="cifra'+(haImportoProprio(voce)?' propria':'')+'">'+eur(importoDi(voce))+'</span>';
     b.addEventListener('click', ()=>apriScelta(i));
     p.appendChild(b);
   });
@@ -517,10 +536,12 @@ function disegnaPodio(animaTimbro){
   }
   eraCompleta = completa;
 
+  let inCassa = 0;
+  c.forEach(v=>{ if(v) inCassa += importoDi(v); });
   $('#statoGio').innerHTML = pieni===0
     ? 'Nessuna squadra segnata'
     : (pieni<S.config.npag ? pieni+' su '+S.config.npag+' segnate · ' : pieni+' paganti · ')
-      + '<b>'+eur(pieni*S.config.quotaGio)+'</b> in cassa';
+      + '<b>'+eur(inCassa)+'</b> in cassa';
 
   aggiornaBinario();
   aggiornaTestata();
@@ -546,28 +567,77 @@ function scriviGiornata(arr){
   salva();
 }
 
+let importoInSospeso = null;   // importo scelto prima di assegnare la squadra
+
+function applicaImporto(i, val){
+  const arr = caselle(giornataAttiva);
+  if(!arr[i]){ importoInSospeso = val; return; }
+  if(val === null || Math.abs(val - S.config.quotaGio) < 0.001) delete arr[i].i;
+  else arr[i].i = val;
+  scriviGiornata(arr); disegnaPodio(false);
+}
+
 function apriScelta(i){
   const c = caselle(giornataAttiva);
   const n = c.length;
+  const ids = c.map(idDi);
   const extra = i < (n - S.config.npag);
   const titolo = extra ? 'Pagante aggiuntivo' : ordinale(i,n)+'° di giornata';
-  let html = '<h3>'+titolo+'</h3><p class="sub">Giornata '+giornataAttiva+' · versa '+eur(S.config.quotaGio)+'</p>';
+  const meta = Math.round(S.config.quotaGio * 50) / 100;
+  importoInSospeso = null;
+
+  let html = '<h3>'+titolo+'</h3><p class="sub">Giornata '+giornataAttiva+'</p>';
+
+  html += '<p class="occhiello">Quanto versa</p>';
+  html += '<div class="rapidi" id="chipImporti">'+
+    '<button data-i="'+S.config.quotaGio+'">Da regole · '+eur(S.config.quotaGio)+'</button>'+
+    '<button data-i="'+meta+'">Metà · '+eur(meta)+'</button>'+
+    '<button data-i="'+(S.config.quotaGio*2)+'">Doppia · '+eur(S.config.quotaGio*2)+'</button>'+
+    '</div>';
+  html += '<input class="grande-input" id="impSlot" inputmode="decimal" value="'+
+    String(importoDi(c[i])).replace('.',',')+'">';
+
+  html += '<p class="occhiello" style="margin-top:20px">Chi paga</p>';
   S.squadre.forEach(sq=>{
-    const altrove = c.indexOf(sq.id) !== -1 && c[i] !== sq.id;
-    const attuale = c[i] === sq.id;
+    const altrove = ids.indexOf(sq.id) !== -1 && ids[i] !== sq.id;
+    const attuale = ids[i] === sq.id;
     html += '<button class="scelta'+(altrove?' usata':'')+'" data-id="'+sq.id+'"'+(altrove?' disabled':'')+'>'+
       '<b>'+esc(sq.nome)+'</b><span>'+esc(sq.man)+'</span>'+
       (attuale ? '<span class="tag">selezionata</span>' : '')+'</button>';
   });
-  if(c[i]) html += '<button class="bottone vuoto" id="togliSlot">Togli dalla giornata</button>';
+  if(c[i]){
+    html += '<button class="bottone" id="fattoSlot">Fatto</button>';
+    html += '<button class="bottone vuoto" id="togliSlot">Togli dalla giornata</button>';
+  }
   apriFoglio(html);
+
+  function leggiImporto(){ return Math.max(0, num($('#impSlot').value, S.config.quotaGio)); }
+
+  $('#contFoglio').querySelectorAll('#chipImporti button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      const val = num(b.dataset.i, S.config.quotaGio);
+      $('#impSlot').value = String(val).replace('.',',');
+      applicaImporto(i, val);
+      if(caselle(giornataAttiva)[i]) avvisa('Importo aggiornato: '+eur(val));
+    });
+  });
+  $('#impSlot').addEventListener('change', ()=>{
+    const val = leggiImporto();
+    $('#impSlot').value = String(val).replace('.',',');
+    applicaImporto(i, val);
+  });
 
   $('#contFoglio').querySelectorAll('.scelta').forEach(b=>{
     b.addEventListener('click', ()=>{
-      const arr = caselle(giornataAttiva); arr[i] = b.dataset.id;
+      const arr = caselle(giornataAttiva);
+      const val = leggiImporto();
+      arr[i] = {t:b.dataset.id};
+      if(Math.abs(val - S.config.quotaGio) >= 0.001) arr[i].i = val;
       scriviGiornata(arr); chiudiFoglio(); disegnaPodio(true);
     });
   });
+  const ft = $('#fattoSlot');
+  if(ft) ft.addEventListener('click', ()=>{ applicaImporto(i, leggiImporto()); chiudiFoglio(); });
   const tg = $('#togliSlot');
   if(tg) tg.addEventListener('click', ()=>{
     const arr = caselle(giornataAttiva); arr[i] = null;
@@ -612,14 +682,14 @@ function apriSquadra(id){
   const sq = squadra(id), k = contiSquadra(id);
   let html = '<h3>'+esc(sq.nome)+'</h3><p class="sub">'+esc(sq.man)+'</p>';
   html += '<div class="voce"><span>Quota iniziale</span><b>'+eur(k.quota)+'</b></div>';
-  html += '<div class="voce"><span>Quote di giornata<em>'+k.volte+' × '+eur(S.config.quotaGio)+'</em></span><b>'+eur(k.pen)+'</b></div>';
+  html += '<div class="voce"><span>Quote di giornata<em>'+k.volte+(k.volte===1?' giornata':' giornate')+' in zona quota</em></span><b>'+eur(k.pen)+'</b></div>';
   if(k.numeri.length) html += '<div class="numeri-gio">'+k.numeri.map(g=>'<span>G'+g+'</span>').join('')+'</div>';
   html += '<div class="voce"><span>Totale dovuto</span><b>'+eur(k.dovuto)+'</b></div>';
   html += '<div class="voce"><span>Già versato</span><b class="pari">'+eur(k.versato)+'</b></div>';
   html += '<div class="voce"><span><b>Saldo</b></span><b class="'+(k.saldo>0?'debito':'pari')+'">'+eur(k.saldo)+'</b></div>';
 
   html += '<p class="occhiello" style="margin-top:20px">Segna un versamento</p>';
-  html += '<div class="rapidi">'+[S.config.quotaGio,15,30,S.config.quota].map(v=>'<button data-r="'+v+'">+'+eur(v)+'</button>').join('')+
+  html += '<div class="rapidi">'+[S.config.quotaGio,15,30,S.config.quota].filter((v,i,a)=>a.indexOf(v)===i).map(v=>'<button data-r="'+v+'">+'+eur(v)+'</button>').join('')+
     (k.saldo>0 ? '<button data-r="'+k.saldo+'">Salda '+eur(k.saldo)+'</button>' : '')+'</div>';
   html += '<input class="grande-input" id="impVers" inputmode="decimal" placeholder="0">';
   html += '<button class="bottone" id="salvaVers">Segna versamento</button>';
@@ -701,7 +771,7 @@ function disegnaRegole(){
       if(!confirm('Togliere «'+sq.nome+'» dalla lega? Sparisce anche dalle giornate segnate.')) return;
       S.squadre = S.squadre.filter(x=>x.id!==sq.id);
       for(const g in S.giornate){
-        S.giornate[g] = S.giornate[g].map(x=> x===sq.id ? null : x);
+        S.giornate[g] = S.giornate[g].map(x=> (x && x.t===sq.id) ? null : x);
         if(S.giornate[g].every(x=>!x)) delete S.giornate[g];
       }
       S.versamenti = S.versamenti.filter(v=>v.team!==sq.id);
