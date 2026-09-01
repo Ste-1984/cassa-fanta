@@ -36,109 +36,86 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{
-  background:var(--carta);
-  color:var(--inchiostro);
-  font-family:var(--body);
-  font-size:15px;line-height:1.45;
-  -webkit-font-smoothing:antialiased;
-  overscroll-behavior-y:none;
+  background:var(--carta);color:var(--inchiostro);
+  font-family:var(--body);font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;overscroll-behavior-y:none;
 }
 button{font-family:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
-input,select{font-family:inherit;font-size:16px}
+input{font-family:inherit;font-size:16px}
 
 /* ---------- intestazione ---------- */
 .testata{
-  position:sticky;top:0;z-index:20;
-  background:var(--carta);
+  position:sticky;top:0;z-index:20;background:var(--carta);
   border-bottom:1px solid var(--linea-forte);
   padding:calc(env(safe-area-inset-top) + 12px) var(--pad) 10px;
   display:flex;align-items:baseline;justify-content:space-between;gap:12px;
 }
-.marchio{
-  font-family:var(--display);font-weight:700;font-size:19px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--blu);
-  line-height:1;
-}
-.marchio small{display:block;font-family:var(--body);font-weight:400;font-size:10px;letter-spacing:.06em;color:var(--muto);text-transform:none;margin-top:3px}
+.marchio{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--blu);line-height:1}
+.marchio small{display:block;font-family:var(--body);font-weight:400;font-size:10px;
+  letter-spacing:.06em;color:var(--muto);text-transform:none;margin-top:3px}
 .saldo-testata{text-align:right;line-height:1.1}
 .saldo-testata b{font-family:var(--mono);font-weight:600;font-size:20px;display:block}
 .saldo-testata span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muto)}
 
-/* ---------- contenitore ---------- */
 main{padding:0 var(--pad) calc(var(--barra) + env(safe-area-inset-bottom) + 28px)}
 .vista{display:none;padding-top:16px;animation:sali .22s ease both}
 .vista.on{display:block}
 @keyframes sali{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-.occhiello{
-  font-family:var(--display);font-weight:600;font-size:12px;
-  letter-spacing:.22em;text-transform:uppercase;color:var(--blu);
-  margin:0 0 10px;display:flex;align-items:center;gap:10px;
-}
+.occhiello{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--blu);margin:0 0 10px;display:flex;align-items:center;gap:10px}
 .occhiello::after{content:'';flex:1;height:1px;background:var(--linea)}
 
 /* ---------- binario giornate ---------- */
-.binario{
-  display:flex;gap:6px;overflow-x:auto;padding:2px 0 12px;
-  scrollbar-width:none;-webkit-overflow-scrolling:touch;
-  margin:0 calc(var(--pad) * -1);padding-left:var(--pad);padding-right:var(--pad);
-}
+.binario{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  margin:0 calc(var(--pad) * -1);padding:2px var(--pad) 12px}
 .binario::-webkit-scrollbar{display:none}
-.gio{
-  flex:0 0 auto;width:42px;height:46px;border:1px solid var(--linea-forte);
-  background:var(--carta-alt);border-radius:3px;
-  font-family:var(--mono);font-weight:600;font-size:15px;
+.gio{flex:0 0 auto;width:42px;height:46px;border:1px solid var(--linea-forte);
+  background:var(--carta-alt);border-radius:3px;font-family:var(--mono);font-weight:600;font-size:15px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
-  transition:background .15s,color .15s,border-color .15s;
-}
-.gio i{width:5px;height:5px;border-radius:50%;background:transparent;border:1px solid var(--linea-forte);display:block}
+  transition:background .15s,color .15s,border-color .15s}
+.gio i{width:5px;height:5px;border-radius:50%;background:transparent;
+  border:1px solid var(--linea-forte);display:block}
 .gio.piena i{background:var(--rosso);border-color:var(--rosso)}
 .gio.parziale i{background:transparent;border-color:var(--rosso)}
 .gio.sel{background:var(--blu);color:#fff;border-color:var(--blu)}
 .gio.sel i{border-color:rgba(255,255,255,.6)}
 .gio.sel.piena i{background:#fff;border-color:#fff}
 
-/* ---------- podio al contrario ---------- */
-.podio{position:relative;margin-top:2px}
-.slot{
-  width:100%;display:flex;align-items:center;gap:12px;
-  background:var(--carta-alt);border:1px solid var(--linea);
-  border-left:4px solid var(--rosso);
-  border-radius:3px;padding:13px 14px;margin-bottom:8px;text-align:left;
-  transition:transform .12s ease;
-}
+/* ---------- caselle paganti ---------- */
+.podio{position:relative}
+.slot{width:100%;display:flex;align-items:center;gap:11px;background:var(--carta-alt);
+  border:1px solid var(--linea);border-left:4px solid var(--rosso);border-radius:3px;
+  padding:13px 13px;margin-bottom:7px;text-align:left;transition:transform .12s ease}
+.slot.compatta{padding:9px 12px;margin-bottom:5px;gap:9px}
 .slot:active{transform:scale(.985)}
-.slot .pos{
-  font-family:var(--display);font-weight:700;font-size:26px;line-height:1;
-  color:var(--rosso);min-width:38px;letter-spacing:-.01em;
-}
+.slot.extra{border-left-color:var(--blu);border-style:dashed}
+.slot .pos{font-family:var(--display);font-weight:700;font-size:23px;line-height:1;
+  color:var(--rosso);min-width:34px;letter-spacing:-.01em}
+.slot.compatta .pos{font-size:20px;min-width:30px}
+.slot.extra .pos{color:var(--blu);font-size:13px;letter-spacing:.06em}
 .slot .chi{flex:1;min-width:0}
-.slot .chi b{
-  font-family:var(--display);font-weight:600;font-size:19px;line-height:1.1;
-  display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.slot .chi b.vuoto{color:var(--muto);font-weight:600}
+.slot .chi b{font-family:var(--display);font-weight:600;font-size:18px;line-height:1.15;display:block;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot.compatta .chi b{font-size:17px}
+.slot .chi b.vuoto{color:var(--muto)}
 .slot .chi span{font-size:11px;color:var(--muto);display:block;margin-top:1px;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.slot .cifra{font-family:var(--mono);font-weight:600;font-size:17px;color:var(--rosso);white-space:nowrap}
-.slot.grande{padding:19px 14px}
-.slot.media{padding:16px 14px}
+.slot.compatta .chi span{font-size:10px}
+.slot .cifra{font-family:var(--mono);font-weight:600;font-size:16px;color:var(--rosso);white-space:nowrap}
 
-.riga-gio{
-  display:flex;justify-content:space-between;align-items:center;
-  margin-top:12px;font-size:12px;color:var(--muto);
-}
+.aggiungiPM{width:100%;border:1px dashed var(--linea-forte);border-radius:3px;padding:11px;
+  font-size:13px;color:var(--blu);margin-top:2px}
+.riga-gio{display:flex;justify-content:space-between;align-items:center;margin-top:12px;
+  font-size:12px;color:var(--muto)}
 .riga-gio b{font-family:var(--mono);color:var(--inchiostro)}
 .svuota{font-size:12px;color:var(--rosso);text-decoration:underline;text-underline-offset:3px}
 
-/* ---------- timbro ---------- */
-.timbro{
-  position:absolute;right:6px;top:50%;transform:translateY(-50%) rotate(-11deg);
-  border:2.5px solid var(--rosso);color:var(--rosso);
-  font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.18em;
-  padding:5px 11px;border-radius:3px;text-transform:uppercase;
-  pointer-events:none;opacity:.85;
-}
+.timbro{position:absolute;right:8px;top:50%;transform:translateY(-50%) rotate(-11deg);
+  border:2.5px solid var(--rosso);color:var(--rosso);font-family:var(--display);font-weight:700;
+  font-size:15px;letter-spacing:.18em;padding:5px 11px;border-radius:3px;text-transform:uppercase;
+  pointer-events:none;opacity:.85}
 .timbro.batti{animation:batti .45s cubic-bezier(.2,1.4,.5,1) both}
 @keyframes batti{
   0%{opacity:0;transform:translateY(-50%) rotate(-11deg) scale(2.4)}
@@ -146,11 +123,9 @@ main{padding:0 var(--pad) calc(var(--barra) + env(safe-area-inset-bottom) + 28px
   100%{opacity:.85;transform:translateY(-50%) rotate(-11deg) scale(1)}
 }
 
-/* ---------- elenco squadre ---------- */
-.squadra{
-  width:100%;display:flex;align-items:center;gap:12px;text-align:left;
-  padding:12px 2px;border-bottom:1px solid var(--linea);
-}
+/* ---------- squadre ---------- */
+.squadra{width:100%;display:flex;align-items:center;gap:12px;text-align:left;
+  padding:12px 2px;border-bottom:1px solid var(--linea)}
 .squadra .nm{flex:1;min-width:0}
 .squadra .nm b{font-family:var(--display);font-weight:600;font-size:17px;display:block;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -160,20 +135,23 @@ main{padding:0 var(--pad) calc(var(--barra) + env(safe-area-inset-bottom) + 28px
 .squadra .im span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muto)}
 .debito{color:var(--rosso)}
 .pari{color:var(--verde)}
+.numeri-gio{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 2px}
+.numeri-gio span{font-family:var(--mono);font-size:11px;border:1px solid var(--linea-forte);
+  border-radius:3px;padding:2px 6px;color:var(--muto)}
 
 /* ---------- cassa ---------- */
-.cifrone{
-  background:var(--carta-alt);border:1px solid var(--linea-forte);border-radius:3px;
-  padding:18px;text-align:center;margin-bottom:14px;
-}
+.cifrone{background:var(--carta-alt);border:1px solid var(--linea-forte);border-radius:3px;
+  padding:18px;text-align:center;margin-bottom:14px}
 .cifrone b{font-family:var(--mono);font-weight:600;font-size:40px;line-height:1;display:block;color:var(--verde)}
-.cifrone span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muto);display:block;margin-top:7px}
+.cifrone span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muto);
+  display:block;margin-top:7px}
 .coppia{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
 .mini{background:var(--carta-alt);border:1px solid var(--linea);border-radius:3px;padding:12px}
 .mini b{font-family:var(--mono);font-weight:600;font-size:20px;display:block}
 .mini span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muto)}
-.voce{display:flex;justify-content:space-between;padding:9px 2px;border-bottom:1px solid var(--linea);font-size:14px}
-.voce b{font-family:var(--mono);font-weight:500}
+.voce{display:flex;justify-content:space-between;gap:10px;padding:9px 2px;
+  border-bottom:1px solid var(--linea);font-size:14px}
+.voce b{font-family:var(--mono);font-weight:500;white-space:nowrap}
 .voce em{font-style:normal;color:var(--muto);font-size:11px;display:block}
 
 /* ---------- regole ---------- */
@@ -181,11 +159,8 @@ main{padding:0 var(--pad) calc(var(--barra) + env(safe-area-inset-bottom) + 28px
   padding:11px 2px;border-bottom:1px solid var(--linea)}
 .campo label{font-size:14px;flex:1}
 .campo label em{font-style:normal;display:block;font-size:11px;color:var(--muto)}
-.campo input{
-  width:96px;text-align:right;background:var(--carta-alt);
-  border:1px solid var(--linea-forte);border-radius:3px;padding:8px 10px;
-  font-family:var(--mono);font-weight:600;color:var(--inchiostro);
-}
+.campo input{width:96px;text-align:right;background:var(--carta-alt);border:1px solid var(--linea-forte);
+  border-radius:3px;padding:8px 10px;font-family:var(--mono);font-weight:600;color:var(--inchiostro)}
 .campo input:focus{outline:2px solid var(--blu);outline-offset:1px}
 .rigasq{display:flex;gap:8px;align-items:center;padding:7px 2px;border-bottom:1px solid var(--linea)}
 .rigasq input{flex:1;min-width:0;background:var(--carta-alt);border:1px solid var(--linea);
@@ -193,55 +168,48 @@ main{padding:0 var(--pad) calc(var(--barra) + env(safe-area-inset-bottom) + 28px
 .rigasq input.man{font-size:13px;color:var(--muto);flex:.8}
 .cestino{color:var(--rosso);font-size:18px;padding:4px 6px;line-height:1}
 
-.bottone{
-  display:block;width:100%;text-align:center;padding:14px;border-radius:3px;
-  font-family:var(--display);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px;
-  background:var(--blu);color:#fff;margin-top:16px;
-}
+.bottone{display:block;width:100%;text-align:center;padding:14px;border-radius:3px;
+  font-family:var(--display);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  font-size:14px;background:var(--blu);color:#fff;margin-top:16px}
 .bottone.vuoto{background:transparent;color:var(--blu);border:1px solid var(--linea-forte)}
 .bottone.pericolo{background:transparent;color:var(--rosso);border:1px solid var(--rosso)}
 
-textarea{
-  width:100%;height:130px;background:var(--carta-alt);border:1px solid var(--linea-forte);
+textarea{width:100%;height:130px;background:var(--carta-alt);border:1px solid var(--linea-forte);
   border-radius:3px;padding:10px;font-family:var(--mono);font-size:11px;color:var(--inchiostro);
-  margin-top:8px;resize:vertical;
-}
+  margin-top:8px;resize:vertical}
+.guida{background:var(--carta-alt);border:1px solid var(--linea);border-left:4px solid var(--blu);
+  border-radius:3px;padding:12px 14px;font-size:13px}
+.guida p{margin:0 0 8px}
+.guida p:last-child{margin:0;color:var(--muto);font-size:12px}
+.vuotostato{text-align:center;color:var(--muto);font-size:13px;padding:26px 10px;
+  border:1px dashed var(--linea-forte);border-radius:3px}
 
 /* ---------- barra ---------- */
-.barra{
-  position:fixed;left:0;right:0;bottom:0;z-index:30;
-  background:var(--carta);border-top:1px solid var(--linea-forte);
-  display:grid;grid-template-columns:repeat(4,1fr);
-  padding-bottom:env(safe-area-inset-bottom);
-}
-.tab{
-  height:var(--barra);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
-  font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muto);
-}
-.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--carta);
+  border-top:1px solid var(--linea-forte);display:grid;grid-template-columns:repeat(4,1fr);
+  padding-bottom:env(safe-area-inset-bottom)}
+.tab{height:var(--barra);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:5px;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muto)}
+.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
 .tab.on{color:var(--blu)}
 
 /* ---------- foglio ---------- */
-.velo{position:fixed;inset:0;z-index:40;background:rgba(22,33,28,.42);
-  opacity:0;pointer-events:none;transition:opacity .2s}
+.velo{position:fixed;inset:0;z-index:40;background:rgba(22,33,28,.42);opacity:0;
+  pointer-events:none;transition:opacity .2s}
 .velo.on{opacity:1;pointer-events:auto}
-.foglio{
-  position:fixed;left:0;right:0;bottom:0;z-index:41;
-  background:var(--carta);border-top:3px solid var(--blu);
-  border-radius:14px 14px 0 0;
+.foglio{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--carta);
+  border-top:3px solid var(--blu);border-radius:14px 14px 0 0;
   padding:8px var(--pad) calc(env(safe-area-inset-bottom) + 20px);
-  max-height:86vh;overflow-y:auto;
-  transform:translateY(101%);transition:transform .26s cubic-bezier(.3,1,.4,1);
-}
+  max-height:86vh;overflow-y:auto;transform:translateY(101%);
+  transition:transform .26s cubic-bezier(.3,1,.4,1)}
 .foglio.on{transform:none}
 .maniglia{width:38px;height:4px;background:var(--linea-forte);border-radius:2px;margin:6px auto 14px}
-.foglio h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 2px;letter-spacing:.01em}
+.foglio h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 2px}
 .foglio .sub{font-size:12px;color:var(--muto);margin:0 0 16px}
-.scelta{
-  width:100%;display:flex;align-items:center;gap:10px;text-align:left;
-  padding:12px 4px;border-bottom:1px solid var(--linea);
-}
+.scelta{width:100%;display:flex;align-items:center;gap:10px;text-align:left;
+  padding:12px 4px;border-bottom:1px solid var(--linea)}
 .scelta b{font-family:var(--display);font-weight:600;font-size:17px;flex:1;min-width:0;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .scelta span{font-size:11px;color:var(--muto)}
@@ -251,35 +219,23 @@ textarea{
 .rapidi{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 4px}
 .rapidi button{border:1px solid var(--linea-forte);border-radius:20px;padding:8px 14px;
   font-family:var(--mono);font-size:13px;font-weight:600;background:var(--carta-alt)}
-.grande-input{
-  width:100%;background:var(--carta-alt);border:1px solid var(--linea-forte);border-radius:3px;
-  padding:14px;font-family:var(--mono);font-weight:600;font-size:22px;text-align:center;
-  color:var(--inchiostro);margin-top:10px;
-}
-.guida{background:var(--carta-alt);border:1px solid var(--linea);border-left:4px solid var(--blu);
-  border-radius:3px;padding:12px 14px;font-size:13px}
-.guida p{margin:0 0 8px}
-.guida p:last-child{margin:0;color:var(--muto);font-size:12px}
-.vuotostato{text-align:center;color:var(--muto);font-size:13px;padding:26px 10px;
-  border:1px dashed var(--linea-forte);border-radius:3px}
+.grande-input{width:100%;background:var(--carta-alt);border:1px solid var(--linea-forte);
+  border-radius:3px;padding:14px;font-family:var(--mono);font-weight:600;font-size:22px;
+  text-align:center;color:var(--inchiostro);margin-top:10px}
 
-.avviso{
-  position:fixed;left:50%;bottom:calc(var(--barra) + env(safe-area-inset-bottom) + 16px);
-  transform:translate(-50%,14px);z-index:60;
-  background:var(--inchiostro);color:var(--carta);padding:9px 16px;border-radius:20px;
-  font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;
-}
+.avviso{position:fixed;left:50%;bottom:calc(var(--barra) + env(safe-area-inset-bottom) + 16px);
+  transform:translate(-50%,14px);z-index:60;background:var(--inchiostro);color:var(--carta);
+  padding:9px 16px;border-radius:20px;font-size:13px;opacity:0;pointer-events:none;
+  transition:opacity .2s,transform .2s;max-width:82vw;text-align:center}
 .avviso.on{opacity:1;transform:translate(-50%,0)}
 
-@media (prefers-reduced-motion:reduce){
-  *{animation:none !important;transition:none !important}
-}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 </style>
 </head>
 <body>
 
 <header class="testata">
-  <div class="marchio">Cassa Fanta<small id="sottotitolo">Lega a 10 · stagione in corso</small></div>
+  <div class="marchio">Cassa Fanta<small id="sottotitolo">—</small></div>
   <div class="saldo-testata"><b id="cassaTop">€0</b><span>in cassa</span></div>
 </header>
 
@@ -289,6 +245,7 @@ textarea{
     <p class="occhiello">Giornata</p>
     <div class="binario" id="binario"></div>
     <div class="podio" id="podio"></div>
+    <button class="aggiungiPM" id="aggiungiPM">+ Aggiungi pagante (pari merito)</button>
     <div class="riga-gio">
       <span id="statoGio">—</span>
       <button class="svuota" id="svuotaGio">Svuota giornata</button>
@@ -311,7 +268,7 @@ textarea{
     </div>
     <p class="occhiello">Composizione</p>
     <div class="voce"><span>Quote iniziali<em id="c-detQuote">—</em></span><b id="c-quote">€0</b></div>
-    <div class="voce"><span>Penalità di giornata<em id="c-detPen">—</em></span><b id="c-pen">€0</b></div>
+    <div class="voce"><span>Quote di giornata<em id="c-detPen">—</em></span><b id="c-pen">€0</b></div>
     <p class="occhiello" style="margin-top:20px">Ultimi versamenti</p>
     <div id="elencoVersamenti"></div>
   </section>
@@ -320,9 +277,8 @@ textarea{
   <section class="vista" id="v-regole">
     <p class="occhiello">Quote</p>
     <div class="campo"><label>Quota iniziale<em>Per squadra, a inizio stagione</em></label><input id="in-quota" inputmode="decimal"></div>
-    <div class="campo"><label>Terzultimo<em>8ª posizione di giornata</em></label><input id="in-p0" inputmode="decimal"></div>
-    <div class="campo"><label>Penultimo<em>9ª posizione di giornata</em></label><input id="in-p1" inputmode="decimal"></div>
-    <div class="campo"><label>Ultimo<em>10ª posizione di giornata</em></label><input id="in-p2" inputmode="decimal"></div>
+    <div class="campo"><label>Quota di giornata<em>Per ogni squadra che paga</em></label><input id="in-quotaGio" inputmode="decimal"></div>
+    <div class="campo"><label>Squadre paganti<em>Le ultime N di ogni giornata</em></label><input id="in-npag" inputmode="numeric"></div>
     <div class="campo"><label>Numero di giornate</label><input id="in-ngio" inputmode="numeric"></div>
 
     <p class="occhiello" style="margin-top:22px">Squadre</p>
@@ -332,7 +288,7 @@ textarea{
     <p class="occhiello" style="margin-top:26px">Icona sulla schermata Home</p>
     <div class="guida">
       <p>Apri questa pagina in <b>Safari</b>, tocca <b>Condividi</b> in basso e scegli
-      <b>Aggiungi alla schermata Home</b>. L'app parte a tutto schermo, senza barre del browser.</p>
+      <b>Aggiungi alla schermata Home</b>. L'app parte a tutto schermo e funziona anche senza rete.</p>
       <p id="notaDeposito"></p>
     </div>
 
@@ -353,7 +309,7 @@ textarea{
   <button class="tab" data-v="cassa">
     <svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="13" rx="2"/><path d="M2.5 10.5h19M6 15h4"/></svg>Cassa</button>
   <button class="tab" data-v="regole">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7H1a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 2.6 7a1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 7 2.6h.1A1.6 1.6 0 0 0 8.6 1V1a2 2 0 1 1 4 0v.1A1.6 1.6 0 0 0 15 2.6"/></svg>Regole</button>
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.6v3M12 18.4v3M21.4 12h-3M5.6 12h-3M18.6 5.4l-2.1 2.1M7.5 16.5l-2.1 2.1M18.6 18.6l-2.1-2.1M7.5 7.5L5.4 5.4"/></svg>Regole</button>
 </nav>
 
 <div class="velo" id="velo"></div>
@@ -381,8 +337,8 @@ const SQUADRE_INIZIALI = [
 
 function statoIniziale(){
   return {
-    v:1,
-    config:{quota:60, pen:[5,5,5], ngio:38},
+    v:2,
+    config:{quota:60, quotaGio:5, npag:6, ngio:38},
     squadre:SQUADRE_INIZIALI.map((s,i)=>({id:'t'+i, nome:s[0], man:s[1]})),
     giornate:{},
     versamenti:[]
@@ -392,11 +348,22 @@ function statoIniziale(){
 let S = statoIniziale();
 let giornataAttiva = 1;
 
+/* Porta i dati salvati con la versione a tre caselle nel nuovo formato. */
+function migra(d){
+  if(!d || !d.config) return d;
+  if(d.config.pen){
+    const p = d.config.pen;
+    d.config.quotaGio = Math.max.apply(null, p) || 5;
+    d.config.npag = 6;
+    delete d.config.pen;
+  }
+  if(typeof d.config.quotaGio !== 'number') d.config.quotaGio = 5;
+  if(typeof d.config.npag !== 'number') d.config.npag = 6;
+  d.v = 2;
+  return d;
+}
 
-/* ====================== persistenza ====================== */
-/* Il deposito si adatta a dove gira l'app: nel browser usa la memoria di Safari,
-   dentro Claude usa lo storage dell'artefatto, e se entrambi mancano tiene i dati
-   solo per la sessione corrente (in quel caso il backup diventa indispensabile). */
+/* ====================== deposito ====================== */
 const DEPOSITO = (function(){
   if(window.storage && window.storage.get){
     return {
@@ -422,20 +389,15 @@ async function carica(){
   try{
     const t = await DEPOSITO.leggi(CHIAVE);
     if(t) return JSON.parse(t);
-  }catch(e){ /* nessun dato salvato: si parte da zero */ }
+  }catch(e){ /* nessun dato salvato */ }
   return null;
 }
-let attesaSalvataggio = null;
-let salvataggioFallito = false;
+let attesaSalvataggio = null, salvataggioFallito = false;
 function salva(){
   clearTimeout(attesaSalvataggio);
   attesaSalvataggio = setTimeout(async ()=>{
-    try{
-      await DEPOSITO.scrivi(CHIAVE, JSON.stringify(S));
-      salvataggioFallito = false;
-    }catch(e){
-      if(!salvataggioFallito){ salvataggioFallito = true; avvisa('Salvataggio non riuscito: copia il backup'); }
-    }
+    try{ await DEPOSITO.scrivi(CHIAVE, JSON.stringify(S)); salvataggioFallito = false; }
+    catch(e){ if(!salvataggioFallito){ salvataggioFallito = true; avvisa('Salvataggio non riuscito: copia il backup'); } }
   }, 350);
 }
 
@@ -445,52 +407,58 @@ function eur(n){
   n = Math.round(n*100)/100;
   return '€' + (Number.isInteger(n) ? n : n.toFixed(2).replace('.',','));
 }
-function num(v, def){
-  const n = parseFloat(String(v).replace(',','.'));
-  return isNaN(n) ? def : n;
-}
+function num(v, def){ const n = parseFloat(String(v).replace(',','.')); return isNaN(n) ? def : n; }
+function esc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function squadra(id){ return S.squadre.find(t=>t.id===id) || null; }
-function terne(g){ return S.giornate[g] || [null,null,null]; }
+
+/* Caselle di una giornata: almeno quante le posizioni paganti previste,
+   di più se per un pari merito ne sono state aggiunte. */
+function caselle(g){
+  const salvate = S.giornate[g] || [];
+  const n = Math.max(S.config.npag, salvate.length);
+  const out = [];
+  for(let i=0;i<n;i++) out.push(salvate[i] || null);
+  return out;
+}
+/* La casella più in basso è l'ultima in classifica; si risale da lì. */
+function ordinale(i, n){ return S.squadre.length - (n - 1 - i); }
 
 let timerAvviso;
 function avvisa(t){
   const a = $('#avviso'); a.textContent = t; a.classList.add('on');
-  clearTimeout(timerAvviso); timerAvviso = setTimeout(()=>a.classList.remove('on'), 1900);
+  clearTimeout(timerAvviso); timerAvviso = setTimeout(()=>a.classList.remove('on'), 2100);
 }
 
 /* ====================== calcoli ====================== */
 function penalitaDi(id){
-  let tot = 0, conta = [0,0,0];
-  for(const g in S.giornate){
-    const t = S.giornate[g];
-    for(let i=0;i<3;i++) if(t[i]===id){ tot += S.config.pen[i]; conta[i]++; }
-  }
-  return {tot, conta};
+  const numeri = [];
+  for(const g in S.giornate) if((S.giornate[g]||[]).indexOf(id) !== -1) numeri.push(+g);
+  numeri.sort((a,b)=>a-b);
+  return {volte:numeri.length, tot:numeri.length * S.config.quotaGio, numeri};
 }
-function versatoDi(id){
-  return S.versamenti.filter(v=>v.team===id).reduce((a,b)=>a+b.importo,0);
-}
+function versatoDi(id){ return S.versamenti.filter(v=>v.team===id).reduce((a,b)=>a+b.importo,0); }
 function contiSquadra(id){
   const p = penalitaDi(id);
   const dovuto = S.config.quota + p.tot;
   const versato = versatoDi(id);
-  return {quota:S.config.quota, pen:p.tot, conta:p.conta, dovuto, versato, saldo:dovuto-versato};
+  return {quota:S.config.quota, pen:p.tot, volte:p.volte, numeri:p.numeri, dovuto, versato, saldo:dovuto-versato};
+}
+function quotePagate(){
+  let n = 0;
+  for(const g in S.giornate) n += (S.giornate[g]||[]).filter(x=>x).length;
+  return n;
 }
 function totaliCassa(){
   const quote = S.config.quota * S.squadre.length;
-  let pen = 0;
-  for(const g in S.giornate){
-    const t = S.giornate[g];
-    for(let i=0;i<3;i++) if(t[i]) pen += S.config.pen[i];
-  }
+  const pen = quotePagate() * S.config.quotaGio;
   const incassato = S.versamenti.reduce((a,b)=>a+b.importo,0);
   return {quote, pen, maturato:quote+pen, incassato, residuo:quote+pen-incassato};
 }
 function giornateRegistrate(){
-  return Object.keys(S.giornate).filter(g=>terne(g).some(x=>x)).length;
+  return Object.keys(S.giornate).filter(g=>(S.giornate[g]||[]).some(x=>x)).length;
 }
 
-/* ====================== binario giornate ====================== */
+/* ====================== binario ====================== */
 function costruisciBinario(){
   const b = $('#binario'); b.innerHTML = '';
   for(let g=1; g<=S.config.ngio; g++){
@@ -507,42 +475,40 @@ function costruisciBinario(){
 function aggiornaBinario(){
   document.querySelectorAll('.gio').forEach(el=>{
     const g = +el.dataset.g;
-    const t = terne(g);
-    const pieni = t.filter(x=>x).length;
+    const pieni = (S.giornate[g]||[]).filter(x=>x).length;
     el.classList.toggle('sel', g===giornataAttiva);
-    el.classList.toggle('piena', pieni===3);
-    el.classList.toggle('parziale', pieni>0 && pieni<3);
+    el.classList.toggle('piena', pieni>=S.config.npag);
+    el.classList.toggle('parziale', pieni>0 && pieni<S.config.npag);
   });
 }
 
-/* ====================== podio al contrario ====================== */
-const ETICHETTE = [
-  {pos:'8°', ruolo:'terzultimo', cls:''},
-  {pos:'9°', ruolo:'penultimo', cls:'media'},
-  {pos:'10°', ruolo:'ultimo', cls:'grande'}
-];
+/* ====================== caselle paganti ====================== */
 let eraCompleta = false;
 
 function disegnaPodio(animaTimbro){
-  const t = terne(giornataAttiva);
-  const completa = t.every(x=>x);
-  const p = $('#podio');
-  p.innerHTML = '';
-  const importiDiversi = new Set(S.config.pen).size > 1;
-  ETICHETTE.forEach((e,i)=>{
-    const sq = squadra(t[i]);
+  const c = caselle(giornataAttiva);
+  const n = c.length;
+  const pieni = c.filter(x=>x).length;
+  const completa = pieni >= S.config.npag;
+  const compatta = n >= 5;
+
+  const p = $('#podio'); p.innerHTML = '';
+  c.forEach((id,i)=>{
+    const sq = squadra(id);
+    const extra = i < (n - S.config.npag);   // casella in più aggiunta per pari merito
     const b = document.createElement('button');
-    b.className = 'slot ' + (importiDiversi ? e.cls : 'media');
+    b.className = 'slot' + (compatta ? ' compatta' : '') + (extra ? ' extra' : '');
     b.innerHTML =
-      '<span class="pos">'+e.pos+'</span>'+
+      '<span class="pos">'+(extra ? 'P.M.' : ordinale(i,n)+'°')+'</span>'+
       '<span class="chi">'+
         (sq ? '<b>'+esc(sq.nome)+'</b><span>'+esc(sq.man)+'</span>'
-            : '<b class="vuoto">Scegli il '+e.ruolo+'</b><span>Tocca per selezionare</span>')+
+            : '<b class="vuoto">Da assegnare</b><span>Tocca per scegliere</span>')+
       '</span>'+
-      '<span class="cifra">'+eur(S.config.pen[i])+'</span>';
+      '<span class="cifra">'+eur(S.config.quotaGio)+'</span>';
     b.addEventListener('click', ()=>apriScelta(i));
     p.appendChild(b);
   });
+
   if(completa){
     const s = document.createElement('div');
     s.className = 'timbro' + ((animaTimbro && !eraCompleta) ? ' batti' : '');
@@ -551,18 +517,16 @@ function disegnaPodio(animaTimbro){
   }
   eraCompleta = completa;
 
-  const pieni = t.filter(x=>x).length;
-  let inCassa = 0;
-  for(let i=0;i<3;i++) if(t[i]) inCassa += S.config.pen[i];
   $('#statoGio').innerHTML = pieni===0
-    ? 'Nessuna posizione segnata'
-    : (pieni<3 ? pieni+' su 3 segnate · ' : 'Giornata completa · ') + '<b>'+eur(inCassa)+'</b> in cassa';
+    ? 'Nessuna squadra segnata'
+    : (pieni<S.config.npag ? pieni+' su '+S.config.npag+' segnate · ' : pieni+' paganti · ')
+      + '<b>'+eur(pieni*S.config.quotaGio)+'</b> in cassa';
+
   aggiornaBinario();
   aggiornaTestata();
 }
-function esc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
-/* ====================== foglio: scelta squadra ====================== */
+/* ====================== foglio ====================== */
 function apriFoglio(html){
   $('#contFoglio').innerHTML = html;
   $('#velo').classList.add('on');
@@ -574,39 +538,54 @@ function chiudiFoglio(){
 }
 $('#velo').addEventListener('click', chiudiFoglio);
 
+function scriviGiornata(arr){
+  while(arr.length > S.config.npag && !arr[0]) arr.shift();          // toglie le extra rimaste vuote
+  while(arr.length && !arr[arr.length-1] && arr.length > S.config.npag) arr.pop();
+  if(arr.every(x=>!x)) delete S.giornate[giornataAttiva];
+  else S.giornate[giornataAttiva] = arr;
+  salva();
+}
+
 function apriScelta(i){
-  const t = terne(giornataAttiva);
-  const e = ETICHETTE[i];
-  let html = '<h3>'+e.pos+' di giornata</h3><p class="sub">Giornata '+giornataAttiva+' · versa '+eur(S.config.pen[i])+'</p>';
+  const c = caselle(giornataAttiva);
+  const n = c.length;
+  const extra = i < (n - S.config.npag);
+  const titolo = extra ? 'Pagante aggiuntivo' : ordinale(i,n)+'° di giornata';
+  let html = '<h3>'+titolo+'</h3><p class="sub">Giornata '+giornataAttiva+' · versa '+eur(S.config.quotaGio)+'</p>';
   S.squadre.forEach(sq=>{
-    const usataAltrove = t.includes(sq.id) && t[i] !== sq.id;
-    const attuale = t[i] === sq.id;
-    html += '<button class="scelta'+(usataAltrove?' usata':'')+'" data-id="'+sq.id+'"'+(usataAltrove?' disabled':'')+'>'+
+    const altrove = c.indexOf(sq.id) !== -1 && c[i] !== sq.id;
+    const attuale = c[i] === sq.id;
+    html += '<button class="scelta'+(altrove?' usata':'')+'" data-id="'+sq.id+'"'+(altrove?' disabled':'')+'>'+
       '<b>'+esc(sq.nome)+'</b><span>'+esc(sq.man)+'</span>'+
       (attuale ? '<span class="tag">selezionata</span>' : '')+'</button>';
   });
-  if(t[i]) html += '<button class="bottone vuoto" id="togliSlot">Togli dalla giornata</button>';
+  if(c[i]) html += '<button class="bottone vuoto" id="togliSlot">Togli dalla giornata</button>';
   apriFoglio(html);
 
   $('#contFoglio').querySelectorAll('.scelta').forEach(b=>{
     b.addEventListener('click', ()=>{
-      const arr = terne(giornataAttiva).slice();
-      arr[i] = b.dataset.id;
-      S.giornate[giornataAttiva] = arr;
-      salva(); chiudiFoglio(); disegnaPodio(true);
+      const arr = caselle(giornataAttiva); arr[i] = b.dataset.id;
+      scriviGiornata(arr); chiudiFoglio(); disegnaPodio(true);
     });
   });
   const tg = $('#togliSlot');
   if(tg) tg.addEventListener('click', ()=>{
-    const arr = terne(giornataAttiva).slice();
-    arr[i] = null;
-    if(arr.every(x=>!x)) delete S.giornate[giornataAttiva]; else S.giornate[giornataAttiva] = arr;
-    salva(); chiudiFoglio(); disegnaPodio(false);
+    const arr = caselle(giornataAttiva); arr[i] = null;
+    scriviGiornata(arr); chiudiFoglio(); disegnaPodio(false);
   });
 }
 
+$('#aggiungiPM').addEventListener('click', ()=>{
+  const arr = caselle(giornataAttiva);
+  if(arr.length >= S.squadre.length){ avvisa('Non puoi aggiungerne altre'); return; }
+  arr.unshift(null);
+  S.giornate[giornataAttiva] = arr;
+  salva(); disegnaPodio(false);
+  avvisa('Casella aggiunta per il pari merito');
+});
+
 $('#svuotaGio').addEventListener('click', ()=>{
-  if(!S.giornate[giornataAttiva]) { avvisa('Giornata già vuota'); return; }
+  if(!S.giornate[giornataAttiva]){ avvisa('Giornata già vuota'); return; }
   delete S.giornate[giornataAttiva];
   salva(); disegnaPodio(false); avvisa('Giornata '+giornataAttiva+' svuotata');
 });
@@ -614,32 +593,33 @@ $('#svuotaGio').addEventListener('click', ()=>{
 /* ====================== squadre ====================== */
 function disegnaSquadre(){
   const c = $('#elencoSquadre'); c.innerHTML = '';
-  const righe = S.squadre.map(sq=>({sq, k:contiSquadra(sq.id)}))
-    .sort((a,b)=> b.k.saldo - a.k.saldo || a.sq.nome.localeCompare(b.sq.nome,'it'));
-  righe.forEach(({sq,k})=>{
-    const b = document.createElement('button');
-    b.className = 'squadra';
-    b.innerHTML =
-      '<span class="nm"><b>'+esc(sq.nome)+'</b><span>'+esc(sq.man)+
-        (k.conta[2] ? ' · '+k.conta[2]+'× ultimo' : '')+'</span></span>'+
-      '<span class="im"><b class="'+(k.saldo>0?'debito':'pari')+'">'+eur(k.saldo)+'</b>'+
-      '<span>'+(k.saldo>0?'da versare':'in regola')+'</span></span>';
-    b.addEventListener('click', ()=>apriSquadra(sq.id));
-    c.appendChild(b);
-  });
+  S.squadre.map(sq=>({sq, k:contiSquadra(sq.id)}))
+    .sort((a,b)=> b.k.saldo - a.k.saldo || a.sq.nome.localeCompare(b.sq.nome,'it'))
+    .forEach(({sq,k})=>{
+      const b = document.createElement('button');
+      b.className = 'squadra';
+      b.innerHTML =
+        '<span class="nm"><b>'+esc(sq.nome)+'</b><span>'+esc(sq.man)+
+          (k.volte ? ' · '+k.volte+(k.volte===1?' giornata':' giornate')+' in zona quota' : '')+'</span></span>'+
+        '<span class="im"><b class="'+(k.saldo>0?'debito':'pari')+'">'+eur(k.saldo)+'</b>'+
+        '<span>'+(k.saldo>0?'da versare':'in regola')+'</span></span>';
+      b.addEventListener('click', ()=>apriSquadra(sq.id));
+      c.appendChild(b);
+    });
 }
 
 function apriSquadra(id){
   const sq = squadra(id), k = contiSquadra(id);
   let html = '<h3>'+esc(sq.nome)+'</h3><p class="sub">'+esc(sq.man)+'</p>';
   html += '<div class="voce"><span>Quota iniziale</span><b>'+eur(k.quota)+'</b></div>';
-  html += '<div class="voce"><span>Penalità<em>'+k.conta[0]+'× terzultimo · '+k.conta[1]+'× penultimo · '+k.conta[2]+'× ultimo</em></span><b>'+eur(k.pen)+'</b></div>';
+  html += '<div class="voce"><span>Quote di giornata<em>'+k.volte+' × '+eur(S.config.quotaGio)+'</em></span><b>'+eur(k.pen)+'</b></div>';
+  if(k.numeri.length) html += '<div class="numeri-gio">'+k.numeri.map(g=>'<span>G'+g+'</span>').join('')+'</div>';
   html += '<div class="voce"><span>Totale dovuto</span><b>'+eur(k.dovuto)+'</b></div>';
   html += '<div class="voce"><span>Già versato</span><b class="pari">'+eur(k.versato)+'</b></div>';
   html += '<div class="voce"><span><b>Saldo</b></span><b class="'+(k.saldo>0?'debito':'pari')+'">'+eur(k.saldo)+'</b></div>';
 
   html += '<p class="occhiello" style="margin-top:20px">Segna un versamento</p>';
-  html += '<div class="rapidi">'+[5,15,30,60].map(v=>'<button data-r="'+v+'">+'+eur(v)+'</button>').join('')+
+  html += '<div class="rapidi">'+[S.config.quotaGio,15,30,S.config.quota].map(v=>'<button data-r="'+v+'">+'+eur(v)+'</button>').join('')+
     (k.saldo>0 ? '<button data-r="'+k.saldo+'">Salda '+eur(k.saldo)+'</button>' : '')+'</div>';
   html += '<input class="grande-input" id="impVers" inputmode="decimal" placeholder="0">';
   html += '<button class="bottone" id="salvaVers">Segna versamento</button>';
@@ -660,10 +640,8 @@ function apriSquadra(id){
   $('#salvaVers').addEventListener('click', ()=>{
     const imp = num($('#impVers').value, 0);
     if(!imp){ avvisa('Inserisci un importo'); return; }
-    S.versamenti.push({
-      id:'v'+Date.now(), team:id, importo:imp,
-      data:new Date().toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'2-digit'})
-    });
+    S.versamenti.push({id:'v'+Date.now(), team:id, importo:imp,
+      data:new Date().toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'2-digit'})});
     salva(); chiudiFoglio(); disegnaSquadre(); disegnaCassa(); aggiornaTestata();
     avvisa(eur(imp)+' segnati per '+sq.nome);
   });
@@ -684,7 +662,7 @@ function disegnaCassa(){
   $('#c-quote').textContent = eur(t.quote);
   $('#c-pen').textContent = eur(t.pen);
   $('#c-detQuote').textContent = S.squadre.length + ' squadre × ' + eur(S.config.quota);
-  $('#c-detPen').textContent = giornateRegistrate() + ' giornate registrate';
+  $('#c-detPen').textContent = quotePagate() + ' quote su ' + giornateRegistrate() + ' giornate registrate';
 
   const c = $('#elencoVersamenti'); c.innerHTML = '';
   const ultimi = S.versamenti.slice().reverse().slice(0,25);
@@ -699,17 +677,16 @@ function disegnaCassa(){
   });
 }
 function aggiornaTestata(){
-  const t = totaliCassa();
-  $('#cassaTop').textContent = eur(t.incassato);
-  $('#sottotitolo').textContent = 'Lega a '+S.squadre.length+' · '+giornateRegistrate()+'/'+S.config.ngio+' giornate';
+  $('#cassaTop').textContent = eur(totaliCassa().incassato);
+  $('#sottotitolo').textContent = 'Lega a '+S.squadre.length+' · ultime '+S.config.npag+' paganti · '+
+    giornateRegistrate()+'/'+S.config.ngio+' giornate';
 }
 
 /* ====================== regole ====================== */
 function disegnaRegole(){
   $('#in-quota').value = String(S.config.quota).replace('.',',');
-  $('#in-p0').value = String(S.config.pen[0]).replace('.',',');
-  $('#in-p1').value = String(S.config.pen[1]).replace('.',',');
-  $('#in-p2').value = String(S.config.pen[2]).replace('.',',');
+  $('#in-quotaGio').value = String(S.config.quotaGio).replace('.',',');
+  $('#in-npag').value = S.config.npag;
   $('#in-ngio').value = S.config.ngio;
 
   const c = $('#elencoRegoleSquadre'); c.innerHTML = '';
@@ -741,14 +718,11 @@ function disegnaRegole(){
   }
 }
 
-['in-quota','in-p0','in-p1','in-p2','in-ngio'].forEach(idc=>{
+['in-quota','in-quotaGio','in-npag','in-ngio'].forEach(idc=>{
   $('#'+idc).addEventListener('change', ()=>{
     S.config.quota = Math.max(0, num($('#in-quota').value, S.config.quota));
-    S.config.pen = [
-      Math.max(0, num($('#in-p0').value, S.config.pen[0])),
-      Math.max(0, num($('#in-p1').value, S.config.pen[1])),
-      Math.max(0, num($('#in-p2').value, S.config.pen[2]))
-    ];
+    S.config.quotaGio = Math.max(0, num($('#in-quotaGio').value, S.config.quotaGio));
+    S.config.npag = Math.min(S.squadre.length, Math.max(1, Math.round(num($('#in-npag').value, S.config.npag))));
     S.config.ngio = Math.min(60, Math.max(1, Math.round(num($('#in-ngio').value, S.config.ngio))));
     if(giornataAttiva > S.config.ngio) giornataAttiva = S.config.ngio;
     salva(); disegnaRegole(); costruisciBinario(); disegnaPodio(false); disegnaSquadre(); disegnaCassa();
@@ -758,7 +732,7 @@ function disegnaRegole(){
 
 $('#aggiungiSquadra').addEventListener('click', ()=>{
   S.squadre.push({id:'t'+Date.now(), nome:'Nuova squadra', man:''});
-  salva(); disegnaRegole(); disegnaSquadre(); disegnaCassa();
+  salva(); disegnaRegole(); disegnaSquadre(); disegnaCassa(); aggiornaTestata();
 });
 $('#copiaBackup').addEventListener('click', async ()=>{
   const ta = $('#backup'); ta.select();
@@ -767,7 +741,7 @@ $('#copiaBackup').addEventListener('click', async ()=>{
 });
 $('#ripristina').addEventListener('click', ()=>{
   try{
-    const d = JSON.parse($('#backup').value);
+    const d = migra(JSON.parse($('#backup').value));
     if(!d.squadre || !d.config) throw 0;
     S = d; salva(); avviaSchermate(); avvisa('Dati ripristinati');
   }catch(e){ avvisa('Il testo incollato non è valido'); }
@@ -793,24 +767,14 @@ document.querySelectorAll('.tab').forEach(b=>{
 
 /* ====================== avvio ====================== */
 function avviaSchermate(){
-  costruisciBinario();
-  disegnaPodio(false);
-  disegnaSquadre();
-  disegnaCassa();
-  disegnaRegole();
-  aggiornaTestata();
+  costruisciBinario(); disegnaPodio(false); disegnaSquadre();
+  disegnaCassa(); disegnaRegole(); aggiornaTestata();
 }
 (async function(){
-  const salvato = await carica();
+  const salvato = migra(await carica());
   if(salvato && salvato.squadre) S = Object.assign(statoIniziale(), salvato);
-  // se non è ancora stato inserito nulla, allinea le quote ai valori correnti
-  if(!Object.keys(S.giornate).length && !S.versamenti.length){
-    S.config.quota = statoIniziale().config.quota;
-    S.config.pen = statoIniziale().config.pen;
-  }
-  // prima giornata non ancora completata
   for(let g=1; g<=S.config.ngio; g++){
-    if(terne(g).some(x=>!x)){ giornataAttiva = g; break; }
+    if((S.giornate[g]||[]).filter(x=>x).length < S.config.npag){ giornataAttiva = g; break; }
   }
   avviaSchermate();
 })();
@@ -818,7 +782,7 @@ function avviaSchermate(){
 /* ====================== funzionamento senza rete ====================== */
 if('serviceWorker' in navigator){
   window.addEventListener('load', ()=>{
-    navigator.serviceWorker.register('./sw.js').catch(()=>{ /* aperta da file locale: si prosegue senza */ });
+    navigator.serviceWorker.register('./sw.js').catch(()=>{ /* aperta da file locale */ });
   });
 }
 </script>
