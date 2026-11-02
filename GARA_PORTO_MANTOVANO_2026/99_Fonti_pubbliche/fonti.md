@@ -8,3 +8,9 @@
 - Ecocalendario 2026 Porto Mantovano (Mantova Ambiente) – https://porto-mantovano-api.municipiumapp.it/s3/5450/allegati/ufficio-tecnico/porto-mantovano_ma-calendario2026_multi_04-web.pdf
 - Gazzetta di Mantova, Comuni Ricicloni 2025 – https://www.gazzettadimantova.it/territorio-mantovano/mantova-ambiente-premi-comuni-ricicloni-2025-1.12906104/amp
 - Gazzetta di Mantova, piano rifiuti 54 Comuni (Porto Mantovano e Acquanegra fuori) – https://www.gazzettadimantova.it/territorio-mantovano/piano-rifiuti-comune-impianto-fusione-1.12887743
+- Tuttitalia, popolazione Porto Mantovano – https://www.tuttitalia.it/lombardia/61-porto-mantovano/
+- Determina Porto Mantovano 2025 (tariffa corrispettiva, delibera CC 13/2025) – https://servizionline.comune.porto-mantovano.mn.it/AttiVisualizzatore/download/determina/2589705?fId=2589739
+- Atto adesione CUC Area Vasta Brescia (del. CC 70/2024) – https://servizionline.comune.porto-mantovano.mn.it/L190/atto/show/198122?search=&idSezione=70&activePage=19&sort=unita&order=asc
+- Centro di raccolta, sito del Comune – https://www.comune.porto-mantovano.mn.it/it/vivere/centro-di-raccolta
+- Portale CUC Provincia di Brescia – https://cuc.provincia.brescia.it/
+- Mantova Ambiente, ecocalendario 2025 Porto Mantovano (RFID, compostaggio Borgo Mantovano) – https://www.mantovaambiente.it/news/porto-mantovano-ecocalendario-2025

@@ -8,3 +8,7 @@ Da completare dopo la lettura degli atti. Spunti già emersi dal bando TED:
 4. Personale uscente: elenco con livello, anzianità, CCNL applicato, monte ore (clausola sociale art. 57).
 5. Disponibilità del CCR comunale e condizioni di subentro (contenitori e mezzi di proprietà del Comune o del gestore uscente).
 6. Modalità di aggiornamento del canone (MTR-3 ARERA, delibera 397/2025/R/rif) e rapporto tra PEF di gara e PEF regolatorio.
+7. Tariffa corrispettiva: confermare che la fatturazione e la riscossione verso gli utenti sono in capo al concessionario, chi sopporta l'insoluto e con quali strumenti (ruolo coattivo, ingiunzione), e come viene garantito l'equilibrio in caso di riduzione delle utenze.
+8. Mini-isole: numero, ubicazione, tipologia di contenitori e sistema di controllo accessi previsti dalla relazione tecnica; se la fornitura è a carico del concessionario e se restano di proprietà del Comune a fine concessione.
+9. Banca dati RFID/tag esistente: disponibilità e trasferimento al nuovo gestore (anagrafica utenze, contenitori taggati, software di rilevazione).
+10. Subentro al 01/01/2027: tempistica reale tra aggiudicazione e avvio, eventuale periodo di affiancamento con il gestore uscente, stato dei contenitori in uso.
