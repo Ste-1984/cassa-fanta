@@ -64,20 +64,38 @@ Nota sul termine: il disciplinare fissa le ore 09:00 del 30/11/2026. Il caricame
 - Indizio progettuale forte: la relazione tecnica prevede nuove mini-isole e sostituzione dei contenitori. Il modello di gara potrebbe quindi essere misto (porta a porta + mini-isole di prossimità con accesso controllato). Da verificare nel CSA prima di qualsiasi dimensionamento.
 - Consiglio comunale successivo il 29/10/2026 (oggetto non noto).
 
-## Documenti da scaricare da Sintel (lista attesa)
+## Atti di gara ricevuti (02/11) e analisi nel progetto
 
-- [ ] Bando GUUE/GURI e disciplinare di gara
-- [ ] Capitolato speciale descrittivo e prestazionale + allegati tecnici (elenco vie, utenze, flussi storici, calendario)
-- [ ] Schema di contratto di concessione
-- [ ] PEF della concessione / relazione ex art. 177 (equilibrio economico-finanziario, matrice dei rischi)
-- [ ] Relazione tecnico-illustrativa, quadro economico, calcolo manodopera
-- [ ] DUVRI / costi sicurezza
-- [ ] Modelli: domanda, DGUE, dichiarazioni integrative, modello offerta economica, patto d'integrità
-- [ ] Elenco personale uscente (clausola sociale, CCNL Utilitalia/FISE Assoambiente)
-- [ ] Modalità sopralluogo e attestazione
-- [ ] Eventuali chiarimenti già pubblicati
+| Atto | Analisi |
+|---|---|
+| Bando/Disciplinare IDC_90 (50 pp.) | 01_Analisi_preliminare/00_Analisi_Disciplinare_di_gara.md |
+| 01 Relazione tecnico-illustrativa (133 pp.) | 01_Sintesi_Relazione_Tecnico_Illustrativa.md |
+| 02 Disciplinare tecnico-prestazionale (44 pp.) | 02_Sintesi_Disciplinare_Tecnico_Prestazionale.md |
+| Capitolato speciale (25 pp.), Schema di contratto (22 pp.), DUVRI | 03_Sintesi_Capitolato_Contratto.md |
+| PEFA di gara + Relazione PEFA | 04_Analisi_PEFA_di_gara.md |
+| Allegato 6 tool ARERA PEFA_Gara_Offerta | 05_Analisi_Allegato6_tool_PEFA_offerta.md |
+| Allegato personale uscente (13 unità) | nel file 00 e 03 |
+| Modello scomposizione offerta IDC_95 | in 00_Bando_e_atti_di_gara |
+| Requisiti Caruter | 06_Requisiti_CARUTER_go_no_go.md |
+| Mancanti: DGUE Request, IDC_113, IDC_96, IDC_80, modello sopralluogo, determina 647/2026 | da scaricare da Sintel |
 
-## Analisi da fare appena disponibili gli atti
+## Numeri chiave del progetto a base di gara
+
+| Voce | Valore |
+|---|---|
+| Utenze | 7.485 domestiche + 715 non domestiche = 8.200 kit |
+| Rifiuti 2024 | 8.446 t (506 kg/ab), RD 92,49%, secco 635 t (38 kg/ab) |
+| Modello | Porta a porta integrale: organico 2/sett, carta 1/sett, plastica 1/sett (sacco), vetro-lattine e secco quindicinali, verde 48 ritiri/anno, tessili sanitari 1/sett; 5 mini-isole informatizzate; CCR via F. II Gonzaga 60; tariffa corrispettiva puntuale RFID dal giorno 1 |
+| Spazzamento | 10 zone, 371 interventi/anno ≥ 6 h, 1 spazzatrice 5 m³; manuale 2 operatori × 6 gg; lavaggio mensile strade; 5.000 caditoie (87.500 €/anno fuori perimetro regolato ma nel canone) |
+| Personale progetto | 20 FTE (13 uscenti da coop sociali + 7), 827.500 €/anno +3,16%/anno; manodopera 8 anni 7.407.642 € |
+| Mezzi progetto | 11 (4 costipatori 7 m³, 1 compattatore 26 m³, 1 vasca 5 m³, 2 Ape, 1 spazzatrice, scarrabile e gru a ore), tutti nuovi Euro 6, GPS; nel PEFA a noleggio 139.500 €/anno |
+| Investimenti progetto | 1.324.062 € nel 2027 (mezzi 697 k€, contenitori 397 k€, altro 192 k€), WACC 5,9% |
+| Trattamento | dentro la concessione, 526 k€/anno a prezzi fissi (secco 167,82 €/t, organico 74,25, ingombranti 188,16), impianti non indicati; ricavi CONAI 187.733 €/anno con sharing 70% (2027-28) poi 40% |
+| Canone/∑T | 2027: 2.249.566 € (−16% vs 2026 uscente 2.689.045); 2034: 2.397.416; somma 8 anni 18.544.596 + caditoie 700.000 = 19.244.596 |
+| Margine nel PEFA di gara | utile netto 97-130 k€/anno (4,7% cumulato); EBIT = remunerazione regolatoria + quota CONAI trattenuta |
+| Rischi contrattuali | insoluto 100% sul concessionario (FCDE 5%), nessuna matrice dei rischi, garanzia definitiva ex art. 117 su 19,2 M€, 6 polizze da 3 M€, penali con risoluzione al 10%, start-up 3 mesi vs avvio 01/01/2027, crediti a fine gestione restano al concessionario |
+
+## Analisi fatte / da fare (stato 02/11)
 
 1. Requisiti di partecipazione (fatturato, servizi analoghi, iscrizione ANGA cat. 1 classe, certificazioni ISO 9001/14001/45001, EMAS) → verifica go/no-go e necessità di RTI/avvalimento.
 2. Criterio OEPV: tabella punteggi tecnici/economici, soglie di sbarramento, formula prezzo, riparametrazione.
