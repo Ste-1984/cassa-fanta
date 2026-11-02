@@ -39,19 +39,30 @@ Aggiornata al 02/11/2026 (fonte: bando TED 753607-2026, GU S 211/2026 del 30/10/
 
 Nota sul termine: "30/11 ore 00:00:00" va letto come mezzanotte di inizio del 30/11. In pratica l'ultimo giorno utile è domenica 29/11. Chiedere conferma con quesito in piattaforma: è il tipo di ambiguità che genera contenzioso.
 
-## Contesto noto da fonti pubbliche (da verificare sugli atti)
+## Contesto noto da fonti pubbliche (aggiornato 02/11/2026, da verificare sugli atti)
 
-- Gestore attuale: Mantova Ambiente S.r.l. (gruppo TEA), affidamento prorogato al 31/12/2026. Avvio nuovo servizio atteso 01/01/2027.
-- Modello attuale: raccolta porta a porta (ecocalendario Mantova Ambiente 2025/2026), centro di raccolta comunale. Porto Mantovano è tra i "Comuni Ricicloni" 2025 (provincia MN RD ≈ 87%).
-- Il Comune NON ha aderito al piano d'ambito dei 54 Comuni mantovani (fusione TEA/SIEM); ha scelto la gara autonoma insieme ad Acquanegra sul Chiese.
-- Atti approvati dal Consiglio comunale il 24-25/10/2026 (valore 19,2 M€ per 8 anni). Le opposizioni contestano il voto avvenuto "senza relazione tecnica": possibile profilo di fragilità degli atti da monitorare (eventuale ricorso di terzi).
-- Supporto al RUP per la predisposizione degli atti: F.I.V.E. Consulting S.r.l. (Brescia), affidamento di giugno 2026 tramite SE.VA.T. (Valle Trompia). Utile per capire lo stile degli atti: stessa mano probabilmente per la gara di Acquanegra sul Chiese.
-- Gara inizialmente in capo ad altra stazione appaltante, poi trasferita alla CUC Area Vasta Brescia.
+**Territorio e utenze**
+- 16.715 abitanti al 01/01/2026 (ISTAT, dato provvisorio; 16.691 al 01/01/2025), superficie 37,44 km², densità 446 ab/km².
+- Capoluogo + frazioni Sant'Antonio, Bancole, Soave. Comune di cintura di Mantova, forte presenza di utenze non domestiche lungo la SS Cisa.
+- Valore annuo ≈ 2,4 M€ → ≈ 144 €/abitante/anno.
 
-## Abitanti e dati di contesto (da confermare sul capitolato / PEF)
+**Regime tariffario: TARIFFA CORRISPETTIVA, non TARI**
+- Il Comune applica il corrispettivo ex art. 1 c. 668 L. 147/2013 (tariffa puntuale corrispettiva), riscosso dal gestore. Ultimo atto noto: delibera CC n. 13 del 29/04/2025 (tariffe 2025); PEF 2022-2025 redatto da Mantova Ambiente con MTR-2, tariffa trinomia (quota fissa + due quote variabili).
+- Conseguenza per la gara: in concessione il concessionario incasserà verosimilmente la tariffa direttamente dagli utenti (rischio di domanda e di insoluto a suo carico). È il nodo del PEF: verificare nel CSA chi fattura, chi sopporta l'insoluto, come si aggiorna la tariffa (MTR-3, del. ARERA 397/2025/R/rif) e come si tratta il delta tra PEF di gara e PEF regolatorio.
+- Il gestore uscente fa già misurazione puntuale del secco: bidoni con tag RFID (alta/bassa frequenza) e sacchi a perdere con RFID.
 
-- Popolazione ≈ 16.000-16.500 abitanti (ISTAT, da confermare).
-- Valore annuo ≈ 2,4 M€ → ≈ 145-150 €/abitante/anno. In linea con un porta a porta spinto in Lombardia con trattamento escluso o parzialmente incluso: verificare se smaltimento/recupero sono dentro il canone (impatto enorme sul PEF di concessione).
+**Servizio attuale (Mantova Ambiente S.r.l., gruppo TEA)**
+- Porta a porta integrale con ecocalendario per zone, esposizione la sera prima (dalle 21 maggio-settembre, dalle 20 ottobre-aprile), centro di raccolta comunale, mercatino del riuso.
+- Impianto di compostaggio TEA a Borgo Mantovano. Chiarire se il trattamento della FORSU è dentro il perimetro della concessione: cambia tutto nel PEF.
+- Affidamento prorogato al 31/12/2026; avvio nuovo servizio 01/01/2027. Tempo di start-up praticamente nullo tra aggiudicazione e avvio: prevedere nell'offerta un piano di subentro con fase transitoria.
+- Porto Mantovano è "Comune Riciclone" 2025 (RD provinciale ≈ 87%).
+
+**Iter della gara**
+- Il Comune ha aderito alla CUC Area Vasta Brescia fino al 31/12/2027 (delibera CC n. 70 del 29/11/2024).
+- Il Comune NON ha aderito al piano d'ambito dei 54 Comuni mantovani (TEA/SIEM); gara autonoma insieme ad Acquanegra sul Chiese (stesso supporto al RUP: F.I.V.E. Consulting S.r.l., Brescia, affidamento di giugno 2026 tramite SE.VA.T.).
+- Atti approvati dal Consiglio comunale il **06/10/2026**. La relazione tecnica (132 pagine) sarebbe stata consegnata ai consiglieri due giorni dopo il voto e discussa in Commissione Ambiente l'08/10. Le opposizioni contestano: sostituzione dei bidoni, collocazione delle nuove **mini-isole**, sconti per compostaggio domestico, futuro del mercatino del riuso. Profilo di fragilità degli atti da monitorare.
+- Indizio progettuale forte: la relazione tecnica prevede nuove mini-isole e sostituzione dei contenitori. Il modello di gara potrebbe quindi essere misto (porta a porta + mini-isole di prossimità con accesso controllato). Da verificare nel CSA prima di qualsiasi dimensionamento.
+- Consiglio comunale successivo il 29/10/2026 (oggetto non noto).
 
 ## Documenti da scaricare da Sintel (lista attesa)
 
