@@ -19,8 +19,8 @@ Aggiornata al 02/11/2026 (fonte: bando TED 753607-2026, GU S 211/2026 del 30/10/
 | Piattaforma | Sintel (ARIA Lombardia) – ID procedura **211870340** |
 | Link documenti | https://www.sintel.regione.lombardia.it/eprocdata/auctionDetail.xhtml?id=211870340 |
 | ID procedura TED | 6bbe0dc6-2daf-4bd9-96d9-ba38b59cc6bf |
-| Criterio | Da verificare nel disciplinare (atteso OEPV, art. 108 D.Lgs. 36/2023) |
-| CIG | Da rilevare dal disciplinare / Sintel |
+| Criterio | OEPV artt. 108 e 185: 80 tecnica (sbarramento 60/80) + 20 economica su parametri PEFA |
+| CIG | **BD92C7FFB5** |
 | Validità offerta | 180 giorni |
 | Lingua | Italiano |
 | Fatturazione elettronica | Obbligatoria |
@@ -32,12 +32,12 @@ Aggiornata al 02/11/2026 (fonte: bando TED 753607-2026, GU S 211/2026 del 30/10/
 | Adempimento | Termine | Giorni da oggi |
 |---|---|---|
 | Richiesta chiarimenti | **19/11/2026 ore 14:00** | 17 |
-| Termine ricezione offerte | **30/11/2026 ore 00:00** (= sera di domenica 29/11) | 27 |
+| Termine ricezione offerte | **30/11/2026 ore 09:00** (disciplinare par. 13; il TED diceva 00:00) | 28 |
 | Obiettivo interno caricamento su Sintel | venerdì 27/11/2026 | 25 |
-| Sopralluogo | Da verificare nel disciplinare (se obbligatorio, prenotare subito) | – |
+| Prenotazione sopralluogo | **entro 20/11/2026** via PEC comuneportomantovano@legalmail.it (richiesto, non escludente) | 18 |
 | Prima seduta pubblica | Da verificare | – |
 
-Nota sul termine: "30/11 ore 00:00:00" va letto come mezzanotte di inizio del 30/11. In pratica l'ultimo giorno utile è domenica 29/11. Chiedere conferma con quesito in piattaforma: è il tipo di ambiguità che genera contenzioso.
+Nota sul termine: il disciplinare fissa le ore 09:00 del 30/11/2026. Il caricamento va chiuso il 27/11, con il 28-29/11 di riserva.
 
 ## Contesto noto da fonti pubbliche (aggiornato 02/11/2026, da verificare sugli atti)
 
