@@ -1,3 +1,5 @@
+> **Nota di coordinamento (02/11/2026):** dove questo documento afferma che Xcom, Kcom e COnew "non sono modificabili" nel tool, va letto con la correzione del file 05: il foglio IN_PAR, righe 91-92 e 95-98, contiene le celle in cui il concorrente inserisce i propri Xcom, Kcom, COnew TV/TF per anno, e sono esattamente i quattro parametri che il disciplinare (par. 18.4, criteri F.1-F.4) valuta per i 20 punti economici. Il fattore b e Xreg restano invece fissati dall ETC.
+
 # Analisi del PEFA di gara e della Relazione di accompagnamento
 ## Concessione del servizio di gestione integrata dei rifiuti urbani – Comune di Porto Mantovano (MN)
 
