@@ -1,3 +1,5 @@
+> **Superato dal file QUESITI_CONSOLIDATI.md (02/11/2026).** Questo file resta come traccia delle prime ipotesi.
+
 # Quesiti – bozza (termine 19/11/2026 ore 14:00)
 
 Da completare dopo la lettura degli atti. Spunti già emersi dal bando TED:

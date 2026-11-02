@@ -15,7 +15,7 @@ Concorrente: **CARUTER S.r.l.**, Via Trento 159, 98061 Brolo (ME). Amministratri
 | 9 | Impegno 30% assunzioni giovani + 30% donne | dichiarazione | OK | Inserire espressamente nella dichiarazione integrativa (non sanabile) |
 | 10 | Rapporto parità di genere (>50 dipendenti) art. 46 D.Lgs. 198/2006 | Caruter ha verosimilmente >50 dipendenti | DA CONFERMARE | Allegare ultimo rapporto biennale + attestazione trasmissione RSA/consigliera parità; se mancante, è causa di esclusione (par. 5 lett. f) |
 | 11 | L. 68/1999 | dichiarazione | OK | Dichiarazione |
-| 12 | Garanzia provvisoria 384.891,93 € | Riduzioni: ISO 9001 (−30%), digitale (+10%), ISO 14001 (+20%) → 153.956,77 € se tutte presenti | DA CONFERMARE | Verificare certificazioni; attivare il fideiussore subito (impegno al rilascio della definitiva incluso) |
+| 12 | Garanzia provvisoria 384.891,93 € | Riduzioni: ISO 9001 (−30%), digitale (+10%), ISO 14001 (+20%) → 193.985,53 € se tutte presenti (riduzioni applicate in successione: ×0,7 ×0,9 ×0,8) | DA CONFERMARE | Verificare certificazioni; attivare il fideiussore subito (impegno al rilascio della definitiva incluso) |
 | 13 | Contributo ANAC 220 € | — | OK | Pagare su portale ANAC con CIG BD92C7FFB5 |
 | 14 | Sopralluogo | — | DA FARE | PEC di prenotazione entro il 20/11; delegato con delega |
 | 15 | SPID/CIE del legale rappresentante e firma digitale valida | — | DA CONFERMARE | Verificare scadenza certificato di firma |
